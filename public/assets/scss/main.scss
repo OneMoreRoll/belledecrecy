@@ -1,0 +1,2339 @@
+@import "fonts";
+@import "mixins";
+@import "reset";
+@import "variables";
+
+// ------
+// Header
+// ------
+
+header {
+    margin-bottom: 6rem;
+
+    .desk {
+        .animation {
+            #letter_d {
+                -webkit-animation-name: moveLetterD;
+                animation-name: moveLetterD;
+                -webkit-animation-duration: 4s;
+                animation-duration: 4s;
+                -webkit-animation-direction: normal;
+                animation-direction: normal;
+                -webkit-transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+                transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+            }
+
+            @-webkit-keyframes moveLetterD {
+                20%,
+                100% {
+                    transform: translate(0, 0px);
+                }
+                0% {
+                    transform: translate(-19.6rem, 0px);
+                }
+                10% {
+                    transform: translate(-19.6rem, 0px);
+                }
+            }
+            @keyframes moveLetterD {
+                20%,
+                100% {
+                    transform: translate(0, 0px);
+                }
+                0% {
+                    transform: translate(-19.6rem, 0px);
+                }
+                10% {
+                    transform: translate(-19.6rem, 0px);
+                }
+            }
+
+            #letter_c_invisible {
+                -webkit-animation-name: moveLetterCInvisible;
+                animation-name: moveLetterCInvisible;
+                -webkit-animation-duration: 4s;
+                animation-duration: 4s;
+                -webkit-animation-direction: normal;
+                animation-direction: normal;
+                -webkit-transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+                transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+            }
+
+            @-webkit-keyframes moveLetterCInvisible {
+                20%,
+                100% {
+                    transform: translate(-21.1%);
+                    opacity: 0%;
+                }
+                98% {
+                    opacity: 100%;
+                }
+                99% {
+                    opacity: 0%;
+                }
+                0% {
+                    transform: translate(-40rem, 0px);
+                }
+                10% {
+                    transform: translate(-40rem, 0px);
+                }
+            }
+            @keyframes moveLetterCInvisible {
+                20%,
+                100% {
+                    transform: translate(-21.1%);
+                }
+                98% {
+                    opacity: 100%;
+                }
+                99% {
+                    opacity: 0%;
+                }
+                0% {
+                    transform: translate(-40rem, 0px);
+                }
+                10% {
+                    transform: translate(-40rem, 0px);
+                }
+            }
+
+            .letter:not(#letter_b):not(#letter_d):not(#letter_c_invisible) {
+                -webkit-animation-name: showLetters;
+                animation-name: showLetters;
+                -webkit-animation-duration: 1.25s;
+                animation-duration: 1.25s;
+                -webkit-animation-direction: normal;
+                animation-direction: normal;
+                -webkit-animation-timing-function: steps(25, end);
+                animation-timing-function: steps(25, end);
+            }
+
+            @-webkit-keyframes showLetters {
+                100% {
+                    opacity: 100%;
+                }
+                0% {
+                    opacity: 0%;
+                }
+                75% {
+                    opacity: 0%;
+                }
+            }
+            @keyframes showLetters {
+                100% {
+                    opacity: 100%;
+                }
+                0% {
+                    opacity: 0%;
+                }
+                75% {
+                    opacity: 0%;
+                }
+            }
+        }
+
+        @media only screen and (max-width: $md-breakpoint) {
+            display: none;
+        }
+    }
+
+    .mobile {
+        @media only screen and (min-width: $md-breakpoint) {
+            display: none;
+        }
+    }
+
+    .hamburger {
+        display: none;
+
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        z-index: 20;
+
+        width: 15%;
+
+        padding: 2%;
+
+        background-color: white;
+
+        border: 0.2rem solid #333;
+        border-radius: 50%;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+        @media only screen and (max-width: $md-breakpoint) {
+            display: block;
+        }
+    }
+}
+
+// --------------
+// Page d'accueil
+// --------------
+
+.popup_visible {
+    opacity: 0.25;
+    transition: 0.5s;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+section#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 60vh;
+
+    #popup_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: white;
+
+        visibility: hidden;
+        transition: 0.5s;
+        z-index: 5;
+
+        .popup_wrapper {
+            position: relative;
+
+            width: 50rem;
+            height: 70rem;
+
+            margin: 2rem auto;
+
+            box-shadow: 0 0 0.25rem black;
+            border-radius: 0.5rem;
+
+            font-family: "Suisse Int'l Mono";
+
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+            }
+
+            .popup_informations {
+                display: flex;
+                justify-content: space-between;
+
+                margin-top: 0.2rem;
+                margin-bottom: 0.75rem;
+
+                h5 {
+                    font-size: 1.2rem;
+                }
+            }
+
+            img.popup_logo {
+                position: absolute;
+                bottom: -1rem;
+            }
+        }
+
+        #close {
+            position: absolute;
+            left: 90%;
+
+            .btn-close {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-flow: column nowrap;
+
+                width: 8rem;
+                height: 8rem;
+
+                padding: 0;
+                margin: 0;
+
+                background: #494949;
+                border-radius: 50%;
+                border: 0;
+
+                cursor: pointer;
+
+                .icon-cross {
+                    @include cross(4rem, #fff, 0.6rem);
+                }
+
+                .visually-hidden {
+                    clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+
+                    position: absolute;
+
+                    width: 0.1rem;
+                    height: 0.1rem;
+
+                    padding: 0;
+
+                    border: 0;
+
+                    overflow: hidden;
+                }
+
+                &:hover,
+                &:focus {
+                    background: #000000;
+
+                    transform: rotateZ(90deg);
+                }
+            }
+        }
+    }
+
+    .links {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        margin-top: 4rem;
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 35%;
+
+            padding: 4rem 6rem;
+
+            border: 0.3rem black solid;
+            border-radius: 1rem;
+
+            color: black;
+
+            font-family: "Suisse Int'l Mono";
+            font-size: 3rem;
+            text-transform: uppercase;
+            text-align: center;
+            text-decoration: none;
+
+            &:hover {
+                background-color: rgb(0, 0, 0);
+                color: white;
+            }
+        }
+    }
+
+    @media only screen and(max-width: $md-breakpoint) {
+        .links {
+            a {
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $xs-breakpoint) {
+        justify-content: flex-start;
+
+        .links {
+            flex-direction: column;
+
+            a {
+                width: 85%;
+                height: 35%;
+
+                padding: 2rem;
+                margin: 3rem auto;
+
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+// ----------------------
+// Carousel de collection
+// ----------------------
+
+#body_carousel {
+    max-width: 100%;
+    height: 100vh;
+
+    overflow-x: hidden;
+}
+
+section#carousel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+
+    .carousel_inner {
+        .carousel_flex {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 0 9rem;
+
+            .modal_mobile {
+                display: none;
+            }
+
+            .content_wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                flex-basis: 30%;
+
+                text-align: center;
+
+                h1 {
+                    font-size: 1.5rem;
+                    font-family: "Suisse Int'l Mono";
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                h2 {
+                    margin: 0;
+
+                    font-size: 1.3rem;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                p,
+                a {
+                    margin: 0;
+
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                }
+            }
+
+            .image_wrapper {
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            .central_wrapper {
+                flex-basis: 20%;
+
+                #product_infos {
+                    position: absolute;
+                    top: 37.5%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    max-width: 20%;
+
+                    #top_wrapper {
+                        margin-bottom: 4rem;
+                    }
+                }
+
+                .details_button {
+                    position: absolute;
+                    top: 72.5%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    padding: 0;
+
+                    background-color: transparent;
+
+                    border: none;
+                    outline: none;
+
+                    font-family: "Suisse Int'l Mono";
+                    text-transform: uppercase;
+                    font-weight: 600;
+
+                    &:after {
+                        position: absolute;
+                        bottom: 0.2rem;
+                        right: 0;
+
+                        display: block;
+                        width: 100%;
+
+                        border-bottom: 0.2rem solid black;
+
+                        -webkit-transition: 0.3s ease;
+                        transition: 0.3s ease;
+
+                        pointer-events: none;
+
+                        content: "";
+                    }
+
+                    &:hover:after {
+                        width: 0%;
+                    }
+                }
+
+                .product_details {
+                    display: none;
+
+                    position: absolute;
+                    top: 72.5%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    #color_wrapper {
+                        margin-bottom: 0.5rem;
+                    }
+
+                    h1,
+                    #buying_wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        margin-bottom: 2rem;
+
+                        h2 {
+                            position: relative;
+                            width: fit-content;
+
+                            margin-top: 1.5rem;
+
+                            text-align: center;
+
+                            a {
+                                color: black;
+
+                                &:hover {
+                                    color: black;
+
+                                    text-decoration: none;
+                                }
+
+                                &:after {
+                                    position: absolute;
+                                    bottom: 0.2rem;
+                                    right: 0;
+
+                                    display: block;
+                                    width: 100%;
+
+                                    border-bottom: 0.2rem solid black;
+
+                                    -webkit-transition: 0.3s ease;
+                                    transition: 0.3s ease;
+
+                                    pointer-events: none;
+
+                                    content: "";
+                                }
+
+                                &:hover:after {
+                                    width: 0%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: $xl-breakpoint) {
+        h1 {
+            font-size: 3rem !important;
+        }
+        h2 {
+            font-size: 2rem !important;
+        }
+        p,
+        a,
+        button {
+            font-size: 2rem !important;
+        }
+    }
+
+    @media screen and (max-width: $laptop-breakpoint) {
+        top: 45%;
+
+        .carousel_flex {
+            padding: 0 1rem !important;
+
+            .image_wrapper {
+                flex-basis: 35% !important;
+            }
+        }
+    }
+
+    @media screen and(min-width: $md-breakpoint) {
+        .content_mobile_only {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: $md-breakpoint) {
+        .carousel_flex {
+            flex-direction: column;
+            padding: 0 10% !important;
+
+            .content_wrapper {
+                margin-top: 6rem !important;
+
+                img {
+                    max-width: 65% !important;
+                }
+            }
+
+            .content_mobile_only {
+                display: flex;
+                flex-direction: column;
+
+                .lingerie_name_mobile {
+                    margin-top: 2rem;
+
+                    font-family: "Suisse Int'l Mono";
+                    font-size: 1.8rem;
+                    text-transform: uppercase;
+                    text-align: center;
+                    font-weight: 600;
+                }
+
+                .button_wrapper {
+                    position: relative;
+
+                    margin: 1rem auto 0;
+
+                    button {
+                        padding: 0;
+
+                        background-color: transparent;
+
+                        border: none;
+                        outline: none;
+
+                        text-transform: uppercase;
+
+                        &:after {
+                            position: absolute;
+                            bottom: 0.2rem;
+                            right: 0;
+
+                            display: block;
+                            width: 100%;
+
+                            border-bottom: 0.2rem solid black;
+
+                            -webkit-transition: 0.3s ease;
+                            transition: 0.3s ease;
+
+                            pointer-events: none;
+
+                            content: "";
+                        }
+
+                        &:hover:after {
+                            width: 0%;
+                        }
+                    }
+                }
+            }
+
+            #top_wrapper_mobile {
+                h1 {
+                    font-family: "Suisse Int'l Mono";
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                }
+
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .modal_mobile {
+                position: fixed;
+                top: 0;
+                left: 0;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+
+                width: 100%;
+                min-height: 110vh;
+
+                background-color: #f8f8f8;
+
+                text-align: center;
+
+                #close {
+                    position: absolute;
+                    top: 6%;
+                    left: 88%;
+
+                    .btn-close {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-flow: column nowrap;
+
+                        width: 8rem;
+                        height: 8rem;
+
+                        padding: 0;
+                        margin: 0;
+
+                        background: transparent;
+                        border-radius: 50%;
+                        border: 0;
+
+                        cursor: pointer;
+
+                        .icon-cross {
+                            @include cross(4rem, black, 0.6rem);
+                        }
+
+                        .visually-hidden {
+                            clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+
+                            position: absolute;
+
+                            width: 0.1rem;
+                            height: 0.1rem;
+
+                            padding: 0;
+
+                            border: 0;
+
+                            overflow: hidden;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            background: transparent;
+
+                            transform: rotateZ(90deg);
+                        }
+                    }
+                }
+
+                #image_wrapper_mobile {
+                    display: flex;
+                    margin: 0rem 10rem;
+
+                    a {
+                        text-align: center;
+
+                        img {
+                            max-width: 90%;
+                        }
+                    }
+                }
+
+                #bottom_wrapper_mobile {
+                    h1 {
+                        font-family: "Suisse Int'l Mono";
+                        font-size: 1.5rem;
+                        text-transform: uppercase;
+                    }
+
+                    #color_wrapper_mobile {
+                        margin-top: 1rem;
+
+                        p {
+                            margin: 0;
+                        }
+
+                        h2 {
+                            font-size: 1.5rem;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    #buying_wrapper_mobile {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        margin-top: 2rem;
+
+                        h2 {
+                            position: relative;
+
+                            width: fit-content;
+
+                            a {
+                                color: black;
+
+                                font-size: 1.5rem;
+                                text-transform: uppercase;
+
+                                &:hover {
+                                    color: black;
+
+                                    text-decoration: none;
+                                }
+
+                                &:after {
+                                    position: absolute;
+                                    bottom: 0.2rem;
+                                    right: 0;
+
+                                    display: block;
+                                    width: 100%;
+
+                                    border-bottom: 0.2rem solid black;
+
+                                    -webkit-transition: 0.3s ease;
+                                    transition: 0.3s ease;
+
+                                    pointer-events: none;
+
+                                    content: "";
+                                }
+
+                                &:hover:after {
+                                    width: 0%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .content_mobile,
+            .image_mobile {
+                display: none !important;
+            }
+        }
+    }
+
+    @media screen and (max-width: $sm-breakpoint) {
+        .carousel_flex {
+            padding: 0 1rem !important;
+
+            .image_wrapper {
+                a {
+                    img {
+                        max-width: 100% !important;
+                    }
+                }
+            }
+
+            #image_wrapper_mobile {
+                margin: 0 2rem !important;
+            }
+
+            .modal_mobile {
+                justify-content: space-evenly;
+
+                height: 100vh;
+
+                #close {
+                    top: 2%;
+                    left: 83%;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $xxs-breakpoint) {
+        .carousel_flex {
+            .modal_mobile {
+                top: -6rem;
+
+                #close {
+                    top: 0%;
+                    left: 80%;
+                }
+            }
+        }
+    }
+}
+
+// --------
+// A propos
+// --------
+
+section#apropos {
+    display: flex;
+    justify-content: space-evenly;
+
+    .content_wrapper {
+        h1,
+        h2 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Suisse Int'l Mono";
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            margin-bottom: 2.5rem;
+
+            font-size: 1.3rem;
+        }
+
+        p,
+        a {
+            font-size: 1.4rem;
+            text-align: justify;
+        }
+
+        .text_body,
+        form {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                display: block;
+
+                width: 66%;
+                max-width: 30rem;
+
+                padding: 0.5rem 1rem 0.4rem 1rem;
+                margin: 0 auto;
+                margin-top: 2rem;
+
+                color: black;
+
+                border: 0.2rem black solid;
+                border-radius: 0.5rem;
+
+                font-family: "Suisse Int'l Mono";
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                text-align: center;
+                white-space: nowrap;
+
+                overflow: hidden;
+                transition: 0.2s;
+
+                &:hover {
+                    background-color: black;
+
+                    color: white;
+
+                    text-decoration: none;
+                }
+
+                @media only screen and (max-width: $sm-breakpoint) {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+
+            label {
+                font-size: 1.3rem;
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            input {
+                padding: 0.4rem 2rem 0.1rem 2rem;
+
+                border: 0.2rem black solid;
+                border-radius: 0.75rem;
+
+                font-size: 1.5rem;
+            }
+
+            .button_wrapper {
+                position: relative;
+
+                margin: 1rem auto 0;
+
+                button {
+                    padding: 0;
+
+                    background-color: transparent;
+
+                    border: none;
+                    outline: none;
+
+                    text-transform: uppercase;
+
+                    &:after {
+                        position: absolute;
+                        bottom: 0.2rem;
+                        right: 0;
+
+                        display: block;
+                        width: 100%;
+
+                        border-bottom: 0.2rem solid black;
+
+                        -webkit-transition: 0.3s ease;
+                        transition: 0.3s ease;
+
+                        pointer-events: none;
+
+                        content: "";
+                    }
+
+                    &:hover:after {
+                        width: 0%;
+                    }
+                }
+            }
+        }
+
+        form {
+            margin-top: 1.25rem;
+        }
+    }
+
+    #left_content_wrapper {
+        flex-basis: 58%;
+    }
+
+    hr {
+        display: none;
+
+        @media only screen and (max-width: $md-breakpoint) {
+            display: initial;
+
+            width: 90%;
+
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+
+            border-top: 0.2rem solid black;
+        }
+    }
+
+    #right_content_wrapper {
+        display: flex;
+        flex-direction: column;
+
+        flex-basis: 28%;
+
+        .link_wrapper {
+            position: relative;
+            display: inline-block;
+
+            margin: 0.5rem auto;
+            margin-top: 1.25rem;
+
+            a {
+                color: black;
+
+                &:hover {
+                    color: black;
+
+                    text-decoration: none;
+                }
+
+                &:after {
+                    position: absolute;
+                    bottom: 0.2rem;
+                    right: 0;
+
+                    display: block;
+                    width: 100%;
+
+                    border-bottom: 0.2rem solid black;
+
+                    -webkit-transition: 0.3s ease;
+                    transition: 0.3s ease;
+
+                    pointer-events: none;
+
+                    content: "";
+                }
+
+                &:hover:after {
+                    width: 0%;
+                }
+            }
+        }
+
+        .phone_number,
+        .link_wrapper > a {
+            font-size: 1.6rem;
+
+            text-align: center;
+        }
+    }
+
+    @media only screen and (max-width: $md-breakpoint) {
+        flex-direction: column;
+
+        width: 90%;
+
+        margin: 0 auto;
+    }
+}
+
+// --------------
+// Point de vente
+// --------------
+
+section#reservation {
+    display: flex;
+    justify-content: space-evenly;
+
+    .content_wrapper {
+        h1,
+        h2 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Suisse Int'l Mono";
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            margin-bottom: 2.5rem;
+
+            font-size: 1.3rem;
+        }
+
+        p,
+        a {
+            font-size: 1.4rem;
+            text-align: justify;
+        }
+    }
+
+    #left_content_wrapper {
+        flex-basis: 45%;
+    }
+
+    hr {
+        display: none;
+
+        @media only screen and (max-width: $md-breakpoint) {
+            display: initial;
+
+            width: 90%;
+
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+
+            border-top: 0.2rem solid black;
+        }
+    }
+
+    #right_content_wrapper {
+        flex-basis: 40%;
+
+        .thank_message {
+            margin-top: 5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                padding-top: 0.4rem;
+                padding-bottom: 0.25rem;
+
+                text-align: center;
+
+                border-radius: 0.5rem;
+                border: 0.2rem solid black;
+
+                background-color: white !important;
+            }
+
+            label {
+                font-size: 1.3rem;
+                text-transform: uppercase;
+            }
+
+            #date_wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & > * {
+                    margin: 0 0.5rem;
+
+                    font-size: 1.4rem;
+                }
+            }
+
+            #contact_wrapper {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                margin-top: 1rem;
+
+                @media only screen and (max-width: $sm-breakpoint) {
+                    flex-direction: column;
+                    align-items: center;
+
+                    .form_wrapper {
+                        width: 75%;
+                    }
+                }
+            }
+
+            .form_wrapper {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 48%;
+
+                label {
+                    flex-basis: 25%;
+
+                    margin-top: 1.5rem;
+                    margin-bottom: 0;
+                }
+
+                input {
+                    flex-basis: 75%;
+                }
+            }
+
+            .button_wrapper {
+                position: relative;
+
+                margin: 2rem auto 0;
+                margin-bottom: 5rem;
+
+                button {
+                    padding: 0;
+
+                    background-color: transparent;
+
+                    border: none;
+                    outline: none;
+
+                    text-transform: uppercase;
+
+                    &:after {
+                        position: absolute;
+                        bottom: 0.2rem;
+                        right: 0;
+
+                        display: block;
+                        width: 100%;
+
+                        border-bottom: 0.2rem solid black;
+
+                        -webkit-transition: 0.3s ease;
+                        transition: 0.3s ease;
+
+                        pointer-events: none;
+
+                        content: "";
+                    }
+
+                    &:hover:after {
+                        width: 0%;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $md-breakpoint) {
+        flex-direction: column;
+
+        width: 90%;
+
+        margin: 0 auto;
+    }
+}
+
+// ------
+// Footer
+// ------
+
+body#website {
+    padding-bottom: 10rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding-top: 3.2rem;
+
+    background: linear-gradient(0deg, rgba(248, 248, 248, 1) 90%, rgba(253, 187, 45, 0) 100%);
+
+    nav {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        width: 100vw;
+
+        padding-left: 15%;
+        padding-right: 15%;
+
+        margin-bottom: 2rem;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+
+            width: 100%;
+
+            padding: 0;
+
+            text-align: center;
+            list-style-type: none;
+
+            li {
+                position: relative;
+
+                width: fit-content;
+
+                a {
+                    color: black;
+
+                    font-family: "Suisse Int'l Mono";
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: black;
+
+                        text-decoration: none;
+                    }
+
+                    &:after {
+                        position: absolute;
+                        bottom: 0.2rem;
+                        left: 0;
+
+                        display: block;
+                        width: 0;
+
+                        border-bottom: 0.2rem solid black;
+
+                        -webkit-transition: 0.3s ease;
+                        transition: 0.3s ease;
+
+                        pointer-events: none;
+
+                        content: "";
+                    }
+
+                    &:hover:after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: $md-breakpoint) {
+            .nav_ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav_ul.show {
+                display: flex;
+
+                justify-content: space-evenly;
+                align-items: center;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $md-breakpoint) {
+        background: transparent;
+    }
+}
+
+@media only screen and (max-width: $md-breakpoint) {
+    footer {
+        z-index: -1;
+    }
+
+    .footer_mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        top: 0;
+        z-index: 50;
+
+        width: 100vw;
+
+        background: white;
+
+        nav {
+            align-items: center;
+
+            height: 100vh;
+
+            ul {
+                li {
+                    margin: 2rem auto;
+
+                    a {
+                        font-size: 3rem;
+
+                        @media only screen and (max-width: $sm-breakpoint) {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ---------------------
+// Page d'administration
+// ---------------------
+
+#admin_nav {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    max-width: 100%;
+    width: 100vw;
+
+    margin-bottom: 2rem;
+
+    #main_nav {
+        li {
+            a {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        text-align: center;
+        list-style-type: none;
+
+        li {
+            position: relative;
+
+            width: fit-content;
+
+            margin: 0 2rem;
+
+            a {
+                color: black;
+
+                font-family: "Suisse Int'l Mono";
+                font-size: 1.25rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                text-decoration: none;
+
+                &:hover {
+                    color: black;
+
+                    text-decoration: none;
+                }
+
+                &:after {
+                    position: absolute;
+                    bottom: 0.2rem;
+                    left: 0;
+
+                    display: block;
+                    width: 0;
+
+                    border-bottom: 0.2rem solid black;
+
+                    -webkit-transition: 0.3s ease;
+                    transition: 0.3s ease;
+
+                    pointer-events: none;
+
+                    content: "";
+                }
+
+                &:hover:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    hr {
+        width: 50%;
+        height: 0.2rem;
+
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        background-color: black;
+    }
+
+    @media screen and (max-width: $md-breakpoint) {
+        position: fixed;
+        top: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        .main_ul,
+        .secondary_ul {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+
+            background: white;
+        }
+
+        hr {
+            display: none;
+        }
+
+        .main_ul.show,
+        .secondary_ul.show {
+            display: flex;
+
+            justify-content: space-evenly;
+            align-items: center;
+        }
+    }
+}
+
+section#collections,
+section#colors,
+section#lingeries,
+section#popups,
+section#users {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 80%;
+    margin: 10rem auto;
+
+    h1 {
+        font-family: "Suisse Int'l Mono";
+        font-size: 3.5rem;
+        font-weight: bold;
+
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    hr {
+        width: 10rem;
+        height: 0.5rem;
+        margin: auto;
+
+        background-color: black;
+    }
+
+    nav {
+        align-self: flex-end;
+
+        margin: 3rem 0 1rem 0;
+
+        ul {
+            padding: 0;
+
+            li {
+                list-style-type: none;
+
+                a {
+                    padding: 1rem 2rem 0.8rem 2rem;
+
+                    color: black;
+
+                    border: 0.2rem black solid;
+                    border-radius: 0.5rem;
+
+                    font-size: 2rem;
+
+                    transition: 0.2s;
+
+                    &:hover {
+                        background-color: black;
+
+                        color: white;
+
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: $md-breakpoint) {
+            align-self: center;
+        }
+    }
+
+    #collection_wrapper,
+    #color_wrapper,
+    #lingerie_wrapper,
+    #user_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        table {
+            width: 60%;
+
+            border-collapse: collapse;
+
+            font-size: 2rem;
+            text-align: center;
+
+            tr {
+                display: flex;
+                justify-content: center;
+
+                &:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+
+                &:hover {
+                    background-color: #ddd;
+                }
+
+                td,
+                th {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    width: 25%;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+
+                    border: 0.1rem solid #ddd;
+
+                    img {
+                        max-width: 100%;
+                    }
+                }
+
+                th {
+                    padding: 1.2rem 0;
+
+                    background-color: #333;
+                    color: white;
+                }
+
+                .collection_name,
+                .color_name,
+                .lingerie_name {
+                    text-transform: capitalize;
+                }
+
+                .disabled {
+                    pointer-events: none;
+
+                    a {
+                        color: black;
+                        opacity: 0.5;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $md-breakpoint) {
+                width: 85%;
+
+                font-size: 1.5rem;
+            }
+
+            @media only screen and (max-width: $xs-breakpoint) {
+                width: 110%;
+
+                font-size: 1rem;
+            }
+        }
+
+        #color_table {
+            th,
+            td {
+                width: 33%;
+            }
+        }
+    }
+
+    #popups_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .popup_wrapper {
+            position: relative;
+
+            width: 40.8rem;
+            height: 57rem;
+
+            margin: 2rem auto;
+
+            box-shadow: 0 0 0.25rem black;
+            border-radius: 0.5rem;
+
+            font-family: "Suisse Int'l Mono";
+
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+            }
+
+            .popup_informations {
+                display: flex;
+                justify-content: space-between;
+
+                margin-top: 0.2rem;
+                margin-bottom: 0.75rem;
+
+                h5 {
+                    font-size: 1.2rem;
+                }
+            }
+
+            img.popup_logo {
+                position: absolute;
+                bottom: -1rem;
+            }
+        }
+
+        .popup_options {
+            margin-bottom: 5rem;
+
+            p {
+                margin-bottom: 2rem;
+
+                text-align: center;
+            }
+
+            a {
+                padding: 1rem 2rem 0.8rem 2rem;
+
+                color: black;
+
+                border: 0.2rem black solid;
+                border-radius: 0.5rem;
+
+                font-size: 2rem;
+
+                transition: 0.2s;
+
+                &:hover {
+                    background-color: black;
+
+                    color: white;
+
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $xs-breakpoint) {
+        width: 90%;
+    }
+}
+
+section#lingeries {
+    #lingerie_wrapper {
+        #lingerie_table {
+            width: 100%;
+
+            .lingerie_number {
+                width: 5%;
+            }
+
+            td,
+            th {
+                width: 11%;
+
+                word-break: break-all;
+            }
+        }
+    }
+
+    @media screen and (max-width: $md-breakpoint) {
+        width: 95%;
+
+        #lingerie_table {
+            width: 95%;
+        }
+    }
+}
+
+@media screen and (min-width: $md-breakpoint) {
+    .sticky {
+        position: fixed;
+        top: 0;
+        z-index: 20;
+
+        width: 100%;
+
+        padding: 2rem 0;
+
+        background-color: #f8f8f8;
+    }
+}
+
+#collection,
+#color,
+#lingerie,
+#popup,
+#create_account,
+#login,
+#ap_admin,
+#emails,
+#res_admin,
+#reservations {
+    padding-top: 2rem;
+
+    nav {
+        display: flex;
+        justify-content: center;
+
+        margin-bottom: 4rem;
+
+        ul {
+            width: 33%;
+
+            padding: 0;
+
+            li {
+                list-style-type: none;
+
+                a {
+                    padding: 1rem 2rem 0.8rem 2rem;
+
+                    color: black;
+
+                    border: 0.2rem black solid;
+                    border-radius: 0.5rem;
+
+                    font-size: 2rem;
+
+                    transition: 0.2s;
+
+                    &:hover {
+                        background-color: black;
+
+                        color: white;
+
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $sm-breakpoint) {
+                width: 80%;
+            }
+        }
+    }
+
+    h1 {
+        font-family: "Suisse Int'l Mono";
+        font-size: 3.5rem;
+        font-weight: bold;
+
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    hr {
+        width: 10rem;
+        height: 0.5rem;
+        margin: auto;
+
+        background-color: black;
+    }
+
+    .alert {
+        margin-top: 5rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+
+        .form_wrapper {
+            display: flex;
+            flex-direction: column;
+
+            width: 33%;
+            padding: 1rem 0 3rem 0;
+
+            label,
+            h2 {
+                margin-bottom: 1rem;
+
+                font-family: "Suisse Int'l";
+                font-size: 1.6rem;
+                text-transform: uppercase;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            input[type="email"],
+            input[type="password"],
+            select,
+            textarea {
+                padding: 0 2rem;
+
+                border: 0.2rem black solid;
+                border-radius: 0.75rem;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            input[type="email"],
+            input[type="password"] {
+                padding-top: 0.8rem;
+                padding-bottom: 0.5rem;
+            }
+
+            #price_container {
+                display: inline-block;
+
+                position: relative;
+
+                input[type="number"] {
+                    width: 100%;
+
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        margin: 0;
+
+                        -webkit-appearance: none;
+                    }
+                }
+            }
+
+            #unit {
+                position: absolute;
+                right: 0;
+                top: 0.3rem;
+
+                padding-top: 0.7rem;
+                padding-right: 2rem;
+            }
+
+            select {
+                padding-top: 1rem;
+                padding-bottom: 0.8rem;
+
+                option {
+                    font-family: "Arial";
+                }
+            }
+
+            .custom_scrollbar {
+                display: block;
+
+                width: 100%;
+                height: 12rem;
+
+                overflow: auto;
+            }
+
+            .custom_scrollbar::-webkit-scrollbar {
+                width: 0.5rem;
+                height: 0.8rem;
+
+                background-color: #aaa;
+            }
+
+            .custom_scrollbar::-webkit-scrollbar-thumb {
+                background: #000;
+            }
+
+            textarea {
+                min-height: 5rem;
+                max-height: 15rem;
+                padding: 1rem 2rem;
+
+                resize: vertical;
+            }
+
+            .switch {
+                display: inline-block;
+
+                position: relative;
+
+                width: 6rem;
+                height: 3.4rem;
+                margin-top: 0.5rem;
+
+                input {
+                    width: 0;
+                    height: 0;
+
+                    opacity: 0;
+
+                    &:checked + .slider {
+                        background-color: #181818;
+                    }
+
+                    &:focus + .slider {
+                        box-shadow: 0 0 0.1rem #181818;
+                    }
+
+                    &:checked + .slider:before {
+                        -webkit-transform: translateX(2.6rem);
+                        -ms-transform: translateX(2.6rem);
+                        transform: translateX(2.6rem);
+                    }
+                }
+            }
+
+            .slider {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                border-radius: 3.4rem;
+
+                background-color: #ccc;
+
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+
+                cursor: pointer;
+
+                &:before {
+                    position: absolute;
+                    bottom: 0.4rem;
+                    left: 0.4rem;
+
+                    width: 2.6rem;
+                    height: 2.6rem;
+
+                    -webkit-transition: 0.4s;
+                    transition: 0.4s;
+
+                    border-radius: 50%;
+
+                    background-color: white;
+
+                    content: "";
+                }
+            }
+
+            #images_wrapper {
+                display: flex;
+                justify-content: space-evenly;
+
+                .image_wrapper {
+                    align-items: center;
+                    text-align: center;
+
+                    position: relative;
+
+                    width: 45%;
+                    height: 100%;
+                    min-height: 10rem;
+
+                    .image_preview {
+                        display: block;
+
+                        width: 100%;
+                        height: 100%;
+                        min-height: 15rem;
+
+                        margin-bottom: 2rem;
+
+                        background-color: black;
+
+                        border-radius: 2rem;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+
+                            object-fit: cover;
+
+                            border-radius: 2rem;
+                        }
+                    }
+
+                    .logo_preview {
+                        background-color: transparent;
+                    }
+
+                    input {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+
+                        width: 100%;
+                        height: 100%;
+
+                        padding: 0;
+                        margin: 0;
+
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+
+                .hidden {
+                    display: none;
+                }
+
+                @media only screen and (max-width: $sm-breakpoint) {
+                    flex-direction: column;
+                    align-items: center;
+
+                    .image_wrapper {
+                        width: 100%;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $sm-breakpoint) {
+                width: 80%;
+            }
+        }
+
+        #colors_wrapper {
+            padding-top: 0;
+        }
+
+        input[type="submit"] {
+            padding: 1rem 2rem 0.8rem 2rem;
+
+            background-color: transparent;
+
+            color: black;
+
+            border: 0.2rem black solid;
+            border-radius: 0.5rem;
+
+            font-size: 2rem;
+            text-transform: uppercase;
+
+            transition: 0.2s;
+
+            &:hover {
+                background-color: black;
+
+                color: white;
+
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+#res_admin,
+#ap_admin {
+    margin-top: 10rem;
+    padding-top: 0;
+}
+
+#ap_admin {
+    form {
+        #content {
+            display: flex;
+
+            #left_content,
+            #right_content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .form_wrapper {
+                    width: 95%;
+
+                    #input_left_description,
+                    #input_right_description {
+                        min-height: 10rem;
+                        max-height: 20rem;
+
+                        padding: 1rem 2rem;
+
+                        resize: vertical;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $md-breakpoint) {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+#emails,
+#reservations {
+    padding-bottom: 4rem;
+
+    #email_table,
+    #reservation_table {
+        display: flex;
+        flex-direction: column;
+
+        width: 50%;
+
+        margin: 0 auto;
+        margin-top: 5rem;
+
+        border-collapse: collapse;
+
+        font-size: 1.5rem;
+
+        tr {
+            display: flex;
+            justify-content: center;
+
+            &:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            &:hover {
+                background-color: #ddd;
+            }
+
+            td,
+            th {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+
+                border: 0.1rem solid #ddd;
+
+                text-align: center;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            th {
+                padding: 1.2rem 0;
+
+                background-color: #333;
+                color: white;
+            }
+
+            .email_number {
+                width: 10%;
+            }
+
+            .email_name {
+                width: 40%;
+            }
+
+            .email_time {
+                width: 30%;
+            }
+
+            .email_option {
+                width: 20%;
+            }
+
+            .collection_name,
+            .color_name,
+            .lingerie_name {
+                text-transform: capitalize;
+            }
+
+            .disabled {
+                pointer-events: none;
+
+                a {
+                    color: black;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        @media only screen and (max-width: $md-breakpoint) {
+            width: 85%;
+
+            font-size: 1.5rem;
+        }
+
+        @media only screen and (max-width: $xs-breakpoint) {
+            width: 95%;
+
+            font-size: 1rem;
+        }
+    }
+}
+
+#reservations {
+    #reservation_table {
+        width: 80%;
+
+        word-break: break-all;
+
+        .reservation_number {
+            width: 5%;
+        }
+
+        .reservation_time,
+        .reservation_date,
+        .reservation_option,
+        .reservation_phone {
+            width: 13.5%;
+        }
+
+        .reservation_name {
+            width: 18%;
+        }
+
+        .reservation_email {
+            width: 22.5%;
+        }
+
+        @media screen and (max-width: $md-breakpoint) {
+            width: 90%;
+        }
+    }
+}
+
+section#users {
+    #user_wrapper {
+        margin-top: 5rem;
+
+        #user_table {
+            width: 100%;
+
+            word-break: break-all;
+        }
+    }
+}

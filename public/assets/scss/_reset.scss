@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+
+    height: 100vh;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Suisse Int'l";
+
+    background-color: #f8f8f8;
+
+    @include no-margin;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.alert {
+    text-align: center;
+}

@@ -1,0 +1,46 @@
+@use "sass:math";
+
+@mixin no-margin {
+    padding: 0;
+    margin: 0;
+}
+
+@mixin cross($size: 2rem, $color: currentColor, $thickness: 0.1rem) {
+    position: relative;
+
+    width: $size;
+    height: $size;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    background: none;
+
+    &:before,
+    &:after {
+        position: absolute;
+        top: math.div($size - $thickness, 2);
+
+        height: $thickness;
+        left: 0;
+        right: 0;
+        background: $color;
+
+        border-radius: $thickness;
+
+        content: "";
+    }
+
+    &:before {
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        transform: rotate(-45deg);
+    }
+
+    span {
+        display: block;
+    }
+}

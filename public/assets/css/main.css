@@ -1,0 +1,2830 @@
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("../../assets/fonts/suisseintl.woff2") format("woff2"), url("../../assets/fonts/suisseintl.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Suisse Int'l Mono";
+  src: url("../../assets/fonts/suisseintlmono.woff2") format("woff2"), url("../../assets/fonts/suisseintlmono.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100vh;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Suisse Int'l";
+  background-color: #f8f8f8;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.alert {
+  text-align: center;
+}
+
+header {
+  margin-bottom: 6rem;
+}
+header .desk .animation #letter_d {
+  -webkit-animation-name: moveLetterD;
+  animation-name: moveLetterD;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
+  -webkit-transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+  transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+}
+@-webkit-keyframes moveLetterD {
+  20%, 100% {
+    transform: translate(0, 0px);
+  }
+  0% {
+    transform: translate(-19.6rem, 0px);
+  }
+  10% {
+    transform: translate(-19.6rem, 0px);
+  }
+}
+@keyframes moveLetterD {
+  20%, 100% {
+    transform: translate(0, 0px);
+  }
+  0% {
+    transform: translate(-19.6rem, 0px);
+  }
+  10% {
+    transform: translate(-19.6rem, 0px);
+  }
+}
+header .desk .animation #letter_c_invisible {
+  -webkit-animation-name: moveLetterCInvisible;
+  animation-name: moveLetterCInvisible;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
+  -webkit-transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+  transition-timing-function: cubic-bezier(0.44, -0.005, 1, -0.01);
+}
+@-webkit-keyframes moveLetterCInvisible {
+  20%, 100% {
+    transform: translate(-21.1%);
+    opacity: 0%;
+  }
+  98% {
+    opacity: 100%;
+  }
+  99% {
+    opacity: 0%;
+  }
+  0% {
+    transform: translate(-40rem, 0px);
+  }
+  10% {
+    transform: translate(-40rem, 0px);
+  }
+}
+@keyframes moveLetterCInvisible {
+  20%, 100% {
+    transform: translate(-21.1%);
+  }
+  98% {
+    opacity: 100%;
+  }
+  99% {
+    opacity: 0%;
+  }
+  0% {
+    transform: translate(-40rem, 0px);
+  }
+  10% {
+    transform: translate(-40rem, 0px);
+  }
+}
+header .desk .animation .letter:not(#letter_b):not(#letter_d):not(#letter_c_invisible) {
+  -webkit-animation-name: showLetters;
+  animation-name: showLetters;
+  -webkit-animation-duration: 1.25s;
+  animation-duration: 1.25s;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
+  -webkit-animation-timing-function: steps(25, end);
+  animation-timing-function: steps(25, end);
+}
+@-webkit-keyframes showLetters {
+  100% {
+    opacity: 100%;
+  }
+  0% {
+    opacity: 0%;
+  }
+  75% {
+    opacity: 0%;
+  }
+}
+@keyframes showLetters {
+  100% {
+    opacity: 100%;
+  }
+  0% {
+    opacity: 0%;
+  }
+  75% {
+    opacity: 0%;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  header .desk {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1023px) {
+  header .mobile {
+    display: none;
+  }
+}
+header .hamburger {
+  display: none;
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 20;
+  width: 15%;
+  padding: 2%;
+  background-color: white;
+  border: 0.2rem solid #333;
+  border-radius: 50%;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+header .hamburger:focus {
+  outline: none;
+}
+@media only screen and (max-width: 1023px) {
+  header .hamburger {
+    display: block;
+  }
+}
+
+.popup_visible {
+  opacity: 0.25;
+  transition: 0.5s;
+  pointer-events: none;
+  user-select: none;
+}
+
+section#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+}
+section#home #popup_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  visibility: hidden;
+  transition: 0.5s;
+  z-index: 5;
+}
+section#home #popup_container .popup_wrapper {
+  position: relative;
+  width: 50rem;
+  height: 70rem;
+  margin: 2rem auto;
+  box-shadow: 0 0 0.25rem black;
+  border-radius: 0.5rem;
+  font-family: "Suisse Int'l Mono";
+  overflow: hidden;
+}
+section#home #popup_container .popup_wrapper img {
+  max-width: 100%;
+}
+section#home #popup_container .popup_wrapper .popup_informations {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+  margin-bottom: 0.75rem;
+}
+section#home #popup_container .popup_wrapper .popup_informations h5 {
+  font-size: 1.2rem;
+}
+section#home #popup_container .popup_wrapper img.popup_logo {
+  position: absolute;
+  bottom: -1rem;
+}
+section#home #popup_container #close {
+  position: absolute;
+  left: 90%;
+}
+section#home #popup_container #close .btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  width: 8rem;
+  height: 8rem;
+  padding: 0;
+  margin: 0;
+  background: #494949;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+}
+section#home #popup_container #close .btn-close .icon-cross {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+section#home #popup_container #close .btn-close .icon-cross:before, section#home #popup_container #close .btn-close .icon-cross:after {
+  position: absolute;
+  top: 1.7rem;
+  height: 0.6rem;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 0.6rem;
+  content: "";
+}
+section#home #popup_container #close .btn-close .icon-cross:before {
+  transform: rotate(45deg);
+}
+section#home #popup_container #close .btn-close .icon-cross:after {
+  transform: rotate(-45deg);
+}
+section#home #popup_container #close .btn-close .icon-cross span {
+  display: block;
+}
+section#home #popup_container #close .btn-close .visually-hidden {
+  clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+}
+section#home #popup_container #close .btn-close:hover, section#home #popup_container #close .btn-close:focus {
+  background: #000000;
+  transform: rotateZ(90deg);
+}
+section#home .links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 4rem;
+}
+section#home .links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  padding: 4rem 6rem;
+  border: 0.3rem black solid;
+  border-radius: 1rem;
+  color: black;
+  font-family: "Suisse Int'l Mono";
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+}
+section#home .links a:hover {
+  background-color: black;
+  color: white;
+}
+@media only screen and (max-width: 1023px) {
+  section#home .links a {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (max-width: 575px) {
+  section#home {
+    justify-content: flex-start;
+  }
+  section#home .links {
+    flex-direction: column;
+  }
+  section#home .links a {
+    width: 85%;
+    height: 35%;
+    padding: 2rem;
+    margin: 3rem auto;
+    font-size: 2rem;
+  }
+}
+
+#body_carousel {
+  max-width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+section#carousel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+section#carousel .carousel_inner .carousel_flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 9rem;
+}
+section#carousel .carousel_inner .carousel_flex .modal_mobile {
+  display: none;
+}
+section#carousel .carousel_inner .carousel_flex .content_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-basis: 30%;
+  text-align: center;
+}
+section#carousel .carousel_inner .carousel_flex .content_wrapper h1 {
+  font-size: 1.5rem;
+  font-family: "Suisse Int'l Mono";
+  text-transform: uppercase;
+  font-weight: 600;
+}
+section#carousel .carousel_inner .carousel_flex .content_wrapper h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+section#carousel .carousel_inner .carousel_flex .content_wrapper p,
+section#carousel .carousel_inner .carousel_flex .content_wrapper a {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+section#carousel .carousel_inner .carousel_flex .image_wrapper img {
+  max-width: 100%;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper {
+  flex-basis: 20%;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper #product_infos {
+  position: absolute;
+  top: 37.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 20%;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper #product_infos #top_wrapper {
+  margin-bottom: 4rem;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .details_button {
+  position: absolute;
+  top: 72.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: "Suisse Int'l Mono";
+  text-transform: uppercase;
+  font-weight: 600;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .details_button:after {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  display: block;
+  width: 100%;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .details_button:hover:after {
+  width: 0%;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details {
+  display: none;
+  position: absolute;
+  top: 72.5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #color_wrapper {
+  margin-bottom: 0.5rem;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details h1,
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #buying_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details h1 h2,
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #buying_wrapper h2 {
+  position: relative;
+  width: fit-content;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details h1 h2 a,
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #buying_wrapper h2 a {
+  color: black;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details h1 h2 a:hover,
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #buying_wrapper h2 a:hover {
+  color: black;
+  text-decoration: none;
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details h1 h2 a:after,
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #buying_wrapper h2 a:after {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  display: block;
+  width: 100%;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details h1 h2 a:hover:after,
+section#carousel .carousel_inner .carousel_flex .central_wrapper .product_details #buying_wrapper h2 a:hover:after {
+  width: 0%;
+}
+@media screen and (min-width: 2000px) {
+  section#carousel h1 {
+    font-size: 3rem !important;
+  }
+  section#carousel h2 {
+    font-size: 2rem !important;
+  }
+  section#carousel p,
+section#carousel a,
+section#carousel button {
+    font-size: 2rem !important;
+  }
+}
+@media screen and (max-width: 1439px) {
+  section#carousel {
+    top: 45%;
+  }
+  section#carousel .carousel_flex {
+    padding: 0 1rem !important;
+  }
+  section#carousel .carousel_flex .image_wrapper {
+    flex-basis: 35% !important;
+  }
+}
+@media screen and (min-width: 1023px) {
+  section#carousel .content_mobile_only {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  section#carousel .carousel_flex {
+    flex-direction: column;
+    padding: 0 10% !important;
+  }
+  section#carousel .carousel_flex .content_wrapper {
+    margin-top: 6rem !important;
+  }
+  section#carousel .carousel_flex .content_wrapper img {
+    max-width: 65% !important;
+  }
+  section#carousel .carousel_flex .content_mobile_only {
+    display: flex;
+    flex-direction: column;
+  }
+  section#carousel .carousel_flex .content_mobile_only .lingerie_name_mobile {
+    margin-top: 2rem;
+    font-family: "Suisse Int'l Mono";
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+  }
+  section#carousel .carousel_flex .content_mobile_only .button_wrapper {
+    position: relative;
+    margin: 1rem auto 0;
+  }
+  section#carousel .carousel_flex .content_mobile_only .button_wrapper button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+  }
+  section#carousel .carousel_flex .content_mobile_only .button_wrapper button:after {
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0;
+    display: block;
+    width: 100%;
+    border-bottom: 0.2rem solid black;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    pointer-events: none;
+    content: "";
+  }
+  section#carousel .carousel_flex .content_mobile_only .button_wrapper button:hover:after {
+    width: 0%;
+  }
+  section#carousel .carousel_flex #top_wrapper_mobile h1 {
+    font-family: "Suisse Int'l Mono";
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+  section#carousel .carousel_flex #top_wrapper_mobile p {
+    font-size: 1.2rem;
+  }
+  section#carousel .carousel_flex .modal_mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 110vh;
+    background-color: #f8f8f8;
+    text-align: center;
+  }
+  section#carousel .carousel_flex .modal_mobile #close {
+    position: absolute;
+    top: 6%;
+    left: 88%;
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    width: 8rem;
+    height: 8rem;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close .icon-cross {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close .icon-cross:before, section#carousel .carousel_flex .modal_mobile #close .btn-close .icon-cross:after {
+    position: absolute;
+    top: 1.7rem;
+    height: 0.6rem;
+    left: 0;
+    right: 0;
+    background: black;
+    border-radius: 0.6rem;
+    content: "";
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close .icon-cross:before {
+    transform: rotate(45deg);
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close .icon-cross:after {
+    transform: rotate(-45deg);
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close .icon-cross span {
+    display: block;
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close .visually-hidden {
+    clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+  }
+  section#carousel .carousel_flex .modal_mobile #close .btn-close:hover, section#carousel .carousel_flex .modal_mobile #close .btn-close:focus {
+    background: transparent;
+    transform: rotateZ(90deg);
+  }
+  section#carousel .carousel_flex .modal_mobile #image_wrapper_mobile {
+    display: flex;
+    margin: 0rem 10rem;
+  }
+  section#carousel .carousel_flex .modal_mobile #image_wrapper_mobile a {
+    text-align: center;
+  }
+  section#carousel .carousel_flex .modal_mobile #image_wrapper_mobile a img {
+    max-width: 90%;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile h1 {
+    font-family: "Suisse Int'l Mono";
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #color_wrapper_mobile {
+    margin-top: 1rem;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #color_wrapper_mobile p {
+    margin: 0;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #color_wrapper_mobile h2 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #buying_wrapper_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #buying_wrapper_mobile h2 {
+    position: relative;
+    width: fit-content;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #buying_wrapper_mobile h2 a {
+    color: black;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #buying_wrapper_mobile h2 a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #buying_wrapper_mobile h2 a:after {
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0;
+    display: block;
+    width: 100%;
+    border-bottom: 0.2rem solid black;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    pointer-events: none;
+    content: "";
+  }
+  section#carousel .carousel_flex .modal_mobile #bottom_wrapper_mobile #buying_wrapper_mobile h2 a:hover:after {
+    width: 0%;
+  }
+  section#carousel .carousel_flex .content_mobile,
+section#carousel .carousel_flex .image_mobile {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  section#carousel .carousel_flex {
+    padding: 0 1rem !important;
+  }
+  section#carousel .carousel_flex .image_wrapper a img {
+    max-width: 100% !important;
+  }
+  section#carousel .carousel_flex #image_wrapper_mobile {
+    margin: 0 2rem !important;
+  }
+  section#carousel .carousel_flex .modal_mobile {
+    justify-content: space-evenly;
+    height: 100vh;
+  }
+  section#carousel .carousel_flex .modal_mobile #close {
+    top: 2%;
+    left: 83%;
+  }
+}
+@media screen and (max-width: 375px) {
+  section#carousel .carousel_flex .modal_mobile {
+    top: -6rem;
+  }
+  section#carousel .carousel_flex .modal_mobile #close {
+    top: 0%;
+    left: 80%;
+  }
+}
+
+section#apropos {
+  display: flex;
+  justify-content: space-evenly;
+}
+section#apropos .content_wrapper h1,
+section#apropos .content_wrapper h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+section#apropos .content_wrapper h1 {
+  font-family: "Suisse Int'l Mono";
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+section#apropos .content_wrapper h2 {
+  margin-bottom: 2.5rem;
+  font-size: 1.3rem;
+}
+section#apropos .content_wrapper p,
+section#apropos .content_wrapper a {
+  font-size: 1.4rem;
+  text-align: justify;
+}
+section#apropos .content_wrapper .text_body,
+section#apropos .content_wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+section#apropos .content_wrapper .text_body a,
+section#apropos .content_wrapper form a {
+  display: block;
+  width: 66%;
+  max-width: 30rem;
+  padding: 0.5rem 1rem 0.4rem 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  color: black;
+  border: 0.2rem black solid;
+  border-radius: 0.5rem;
+  font-family: "Suisse Int'l Mono";
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: 0.2s;
+}
+section#apropos .content_wrapper .text_body a:hover,
+section#apropos .content_wrapper form a:hover {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+@media only screen and (max-width: 767px) {
+  section#apropos .content_wrapper .text_body a,
+section#apropos .content_wrapper form a {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+section#apropos .content_wrapper .text_body label,
+section#apropos .content_wrapper form label {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+section#apropos .content_wrapper .text_body input,
+section#apropos .content_wrapper form input {
+  padding: 0.4rem 2rem 0.1rem 2rem;
+  border: 0.2rem black solid;
+  border-radius: 0.75rem;
+  font-size: 1.5rem;
+}
+section#apropos .content_wrapper .text_body .button_wrapper,
+section#apropos .content_wrapper form .button_wrapper {
+  position: relative;
+  margin: 1rem auto 0;
+}
+section#apropos .content_wrapper .text_body .button_wrapper button,
+section#apropos .content_wrapper form .button_wrapper button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+}
+section#apropos .content_wrapper .text_body .button_wrapper button:after,
+section#apropos .content_wrapper form .button_wrapper button:after {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  display: block;
+  width: 100%;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+section#apropos .content_wrapper .text_body .button_wrapper button:hover:after,
+section#apropos .content_wrapper form .button_wrapper button:hover:after {
+  width: 0%;
+}
+section#apropos .content_wrapper form {
+  margin-top: 1.25rem;
+}
+section#apropos #left_content_wrapper {
+  flex-basis: 58%;
+}
+section#apropos hr {
+  display: none;
+}
+@media only screen and (max-width: 1023px) {
+  section#apropos hr {
+    display: initial;
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    border-top: 0.2rem solid black;
+  }
+}
+section#apropos #right_content_wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 28%;
+}
+section#apropos #right_content_wrapper .link_wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0.5rem auto;
+  margin-top: 1.25rem;
+}
+section#apropos #right_content_wrapper .link_wrapper a {
+  color: black;
+}
+section#apropos #right_content_wrapper .link_wrapper a:hover {
+  color: black;
+  text-decoration: none;
+}
+section#apropos #right_content_wrapper .link_wrapper a:after {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  display: block;
+  width: 100%;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+section#apropos #right_content_wrapper .link_wrapper a:hover:after {
+  width: 0%;
+}
+section#apropos #right_content_wrapper .phone_number,
+section#apropos #right_content_wrapper .link_wrapper > a {
+  font-size: 1.6rem;
+  text-align: center;
+}
+@media only screen and (max-width: 1023px) {
+  section#apropos {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+section#reservation {
+  display: flex;
+  justify-content: space-evenly;
+}
+section#reservation .content_wrapper h1,
+section#reservation .content_wrapper h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+section#reservation .content_wrapper h1 {
+  font-family: "Suisse Int'l Mono";
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+section#reservation .content_wrapper h2 {
+  margin-bottom: 2.5rem;
+  font-size: 1.3rem;
+}
+section#reservation .content_wrapper p,
+section#reservation .content_wrapper a {
+  font-size: 1.4rem;
+  text-align: justify;
+}
+section#reservation #left_content_wrapper {
+  flex-basis: 45%;
+}
+section#reservation hr {
+  display: none;
+}
+@media only screen and (max-width: 1023px) {
+  section#reservation hr {
+    display: initial;
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    border-top: 0.2rem solid black;
+  }
+}
+section#reservation #right_content_wrapper {
+  flex-basis: 40%;
+}
+section#reservation #right_content_wrapper .thank_message {
+  margin-top: 5rem;
+}
+section#reservation #right_content_wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+section#reservation #right_content_wrapper form input {
+  padding-top: 0.4rem;
+  padding-bottom: 0.25rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  border: 0.2rem solid black;
+  background-color: white !important;
+}
+section#reservation #right_content_wrapper form label {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+section#reservation #right_content_wrapper form #date_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section#reservation #right_content_wrapper form #date_wrapper > * {
+  margin: 0 0.5rem;
+  font-size: 1.4rem;
+}
+section#reservation #right_content_wrapper form #contact_wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+@media only screen and (max-width: 767px) {
+  section#reservation #right_content_wrapper form #contact_wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  section#reservation #right_content_wrapper form #contact_wrapper .form_wrapper {
+    width: 75%;
+  }
+}
+section#reservation #right_content_wrapper form .form_wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 48%;
+}
+section#reservation #right_content_wrapper form .form_wrapper label {
+  flex-basis: 25%;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+section#reservation #right_content_wrapper form .form_wrapper input {
+  flex-basis: 75%;
+}
+section#reservation #right_content_wrapper form .button_wrapper {
+  position: relative;
+  margin: 2rem auto 0;
+  margin-bottom: 5rem;
+}
+section#reservation #right_content_wrapper form .button_wrapper button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+}
+section#reservation #right_content_wrapper form .button_wrapper button:after {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0;
+  display: block;
+  width: 100%;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+section#reservation #right_content_wrapper form .button_wrapper button:hover:after {
+  width: 0%;
+}
+@media only screen and (max-width: 1023px) {
+  section#reservation {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+body#website {
+  padding-bottom: 10rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 3.2rem;
+  background: linear-gradient(0deg, #f8f8f8 90%, rgba(253, 187, 45, 0) 100%);
+}
+footer nav {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100vw;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-bottom: 2rem;
+}
+footer nav ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+}
+footer nav ul li {
+  position: relative;
+  width: fit-content;
+}
+footer nav ul li a {
+  color: black;
+  font-family: "Suisse Int'l Mono";
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+footer nav ul li a:hover {
+  color: black;
+  text-decoration: none;
+}
+footer nav ul li a:after {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0;
+  display: block;
+  width: 0;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+footer nav ul li a:hover:after {
+  width: 100%;
+}
+@media screen and (max-width: 1023px) {
+  footer nav .nav_ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  footer nav .nav_ul.show {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  footer {
+    background: transparent;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  footer {
+    z-index: -1;
+  }
+
+  .footer_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    width: 100vw;
+    background: white;
+  }
+  .footer_mobile nav {
+    align-items: center;
+    height: 100vh;
+  }
+  .footer_mobile nav ul li {
+    margin: 2rem auto;
+  }
+  .footer_mobile nav ul li a {
+    font-size: 3rem;
+  }
+}
+@media only screen and (max-width: 1023px) and (max-width: 767px) {
+  .footer_mobile nav ul li a {
+    font-size: 2rem;
+  }
+}
+#admin_nav {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 100%;
+  width: 100vw;
+  margin-bottom: 2rem;
+}
+#admin_nav #main_nav li a {
+  font-size: 2rem;
+}
+#admin_nav ul {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+}
+#admin_nav ul li {
+  position: relative;
+  width: fit-content;
+  margin: 0 2rem;
+}
+#admin_nav ul li a {
+  color: black;
+  font-family: "Suisse Int'l Mono";
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#admin_nav ul li a:hover {
+  color: black;
+  text-decoration: none;
+}
+#admin_nav ul li a:after {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0;
+  display: block;
+  width: 0;
+  border-bottom: 0.2rem solid black;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  pointer-events: none;
+  content: "";
+}
+#admin_nav ul li a:hover:after {
+  width: 100%;
+}
+#admin_nav hr {
+  width: 50%;
+  height: 0.2rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: black;
+}
+@media screen and (max-width: 1023px) {
+  #admin_nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  #admin_nav .main_ul,
+#admin_nav .secondary_ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+  }
+  #admin_nav hr {
+    display: none;
+  }
+  #admin_nav .main_ul.show,
+#admin_nav .secondary_ul.show {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+section#collections,
+section#colors,
+section#lingeries,
+section#popups,
+section#users {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: 10rem auto;
+}
+section#collections h1,
+section#colors h1,
+section#lingeries h1,
+section#popups h1,
+section#users h1 {
+  font-family: "Suisse Int'l Mono";
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+section#collections hr,
+section#colors hr,
+section#lingeries hr,
+section#popups hr,
+section#users hr {
+  width: 10rem;
+  height: 0.5rem;
+  margin: auto;
+  background-color: black;
+}
+section#collections nav,
+section#colors nav,
+section#lingeries nav,
+section#popups nav,
+section#users nav {
+  align-self: flex-end;
+  margin: 3rem 0 1rem 0;
+}
+section#collections nav ul,
+section#colors nav ul,
+section#lingeries nav ul,
+section#popups nav ul,
+section#users nav ul {
+  padding: 0;
+}
+section#collections nav ul li,
+section#colors nav ul li,
+section#lingeries nav ul li,
+section#popups nav ul li,
+section#users nav ul li {
+  list-style-type: none;
+}
+section#collections nav ul li a,
+section#colors nav ul li a,
+section#lingeries nav ul li a,
+section#popups nav ul li a,
+section#users nav ul li a {
+  padding: 1rem 2rem 0.8rem 2rem;
+  color: black;
+  border: 0.2rem black solid;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: 0.2s;
+}
+section#collections nav ul li a:hover,
+section#colors nav ul li a:hover,
+section#lingeries nav ul li a:hover,
+section#popups nav ul li a:hover,
+section#users nav ul li a:hover {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+@media only screen and (max-width: 1023px) {
+  section#collections nav,
+section#colors nav,
+section#lingeries nav,
+section#popups nav,
+section#users nav {
+    align-self: center;
+  }
+}
+section#collections #collection_wrapper,
+section#collections #color_wrapper,
+section#collections #lingerie_wrapper,
+section#collections #user_wrapper,
+section#colors #collection_wrapper,
+section#colors #color_wrapper,
+section#colors #lingerie_wrapper,
+section#colors #user_wrapper,
+section#lingeries #collection_wrapper,
+section#lingeries #color_wrapper,
+section#lingeries #lingerie_wrapper,
+section#lingeries #user_wrapper,
+section#popups #collection_wrapper,
+section#popups #color_wrapper,
+section#popups #lingerie_wrapper,
+section#popups #user_wrapper,
+section#users #collection_wrapper,
+section#users #color_wrapper,
+section#users #lingerie_wrapper,
+section#users #user_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section#collections #collection_wrapper table,
+section#collections #color_wrapper table,
+section#collections #lingerie_wrapper table,
+section#collections #user_wrapper table,
+section#colors #collection_wrapper table,
+section#colors #color_wrapper table,
+section#colors #lingerie_wrapper table,
+section#colors #user_wrapper table,
+section#lingeries #collection_wrapper table,
+section#lingeries #color_wrapper table,
+section#lingeries #lingerie_wrapper table,
+section#lingeries #user_wrapper table,
+section#popups #collection_wrapper table,
+section#popups #color_wrapper table,
+section#popups #lingerie_wrapper table,
+section#popups #user_wrapper table,
+section#users #collection_wrapper table,
+section#users #color_wrapper table,
+section#users #lingerie_wrapper table,
+section#users #user_wrapper table {
+  width: 60%;
+  border-collapse: collapse;
+  font-size: 2rem;
+  text-align: center;
+}
+section#collections #collection_wrapper table tr,
+section#collections #color_wrapper table tr,
+section#collections #lingerie_wrapper table tr,
+section#collections #user_wrapper table tr,
+section#colors #collection_wrapper table tr,
+section#colors #color_wrapper table tr,
+section#colors #lingerie_wrapper table tr,
+section#colors #user_wrapper table tr,
+section#lingeries #collection_wrapper table tr,
+section#lingeries #color_wrapper table tr,
+section#lingeries #lingerie_wrapper table tr,
+section#lingeries #user_wrapper table tr,
+section#popups #collection_wrapper table tr,
+section#popups #color_wrapper table tr,
+section#popups #lingerie_wrapper table tr,
+section#popups #user_wrapper table tr,
+section#users #collection_wrapper table tr,
+section#users #color_wrapper table tr,
+section#users #lingerie_wrapper table tr,
+section#users #user_wrapper table tr {
+  display: flex;
+  justify-content: center;
+}
+section#collections #collection_wrapper table tr:nth-child(even),
+section#collections #color_wrapper table tr:nth-child(even),
+section#collections #lingerie_wrapper table tr:nth-child(even),
+section#collections #user_wrapper table tr:nth-child(even),
+section#colors #collection_wrapper table tr:nth-child(even),
+section#colors #color_wrapper table tr:nth-child(even),
+section#colors #lingerie_wrapper table tr:nth-child(even),
+section#colors #user_wrapper table tr:nth-child(even),
+section#lingeries #collection_wrapper table tr:nth-child(even),
+section#lingeries #color_wrapper table tr:nth-child(even),
+section#lingeries #lingerie_wrapper table tr:nth-child(even),
+section#lingeries #user_wrapper table tr:nth-child(even),
+section#popups #collection_wrapper table tr:nth-child(even),
+section#popups #color_wrapper table tr:nth-child(even),
+section#popups #lingerie_wrapper table tr:nth-child(even),
+section#popups #user_wrapper table tr:nth-child(even),
+section#users #collection_wrapper table tr:nth-child(even),
+section#users #color_wrapper table tr:nth-child(even),
+section#users #lingerie_wrapper table tr:nth-child(even),
+section#users #user_wrapper table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+section#collections #collection_wrapper table tr:hover,
+section#collections #color_wrapper table tr:hover,
+section#collections #lingerie_wrapper table tr:hover,
+section#collections #user_wrapper table tr:hover,
+section#colors #collection_wrapper table tr:hover,
+section#colors #color_wrapper table tr:hover,
+section#colors #lingerie_wrapper table tr:hover,
+section#colors #user_wrapper table tr:hover,
+section#lingeries #collection_wrapper table tr:hover,
+section#lingeries #color_wrapper table tr:hover,
+section#lingeries #lingerie_wrapper table tr:hover,
+section#lingeries #user_wrapper table tr:hover,
+section#popups #collection_wrapper table tr:hover,
+section#popups #color_wrapper table tr:hover,
+section#popups #lingerie_wrapper table tr:hover,
+section#popups #user_wrapper table tr:hover,
+section#users #collection_wrapper table tr:hover,
+section#users #color_wrapper table tr:hover,
+section#users #lingerie_wrapper table tr:hover,
+section#users #user_wrapper table tr:hover {
+  background-color: #ddd;
+}
+section#collections #collection_wrapper table tr td,
+section#collections #collection_wrapper table tr th,
+section#collections #color_wrapper table tr td,
+section#collections #color_wrapper table tr th,
+section#collections #lingerie_wrapper table tr td,
+section#collections #lingerie_wrapper table tr th,
+section#collections #user_wrapper table tr td,
+section#collections #user_wrapper table tr th,
+section#colors #collection_wrapper table tr td,
+section#colors #collection_wrapper table tr th,
+section#colors #color_wrapper table tr td,
+section#colors #color_wrapper table tr th,
+section#colors #lingerie_wrapper table tr td,
+section#colors #lingerie_wrapper table tr th,
+section#colors #user_wrapper table tr td,
+section#colors #user_wrapper table tr th,
+section#lingeries #collection_wrapper table tr td,
+section#lingeries #collection_wrapper table tr th,
+section#lingeries #color_wrapper table tr td,
+section#lingeries #color_wrapper table tr th,
+section#lingeries #lingerie_wrapper table tr td,
+section#lingeries #lingerie_wrapper table tr th,
+section#lingeries #user_wrapper table tr td,
+section#lingeries #user_wrapper table tr th,
+section#popups #collection_wrapper table tr td,
+section#popups #collection_wrapper table tr th,
+section#popups #color_wrapper table tr td,
+section#popups #color_wrapper table tr th,
+section#popups #lingerie_wrapper table tr td,
+section#popups #lingerie_wrapper table tr th,
+section#popups #user_wrapper table tr td,
+section#popups #user_wrapper table tr th,
+section#users #collection_wrapper table tr td,
+section#users #collection_wrapper table tr th,
+section#users #color_wrapper table tr td,
+section#users #color_wrapper table tr th,
+section#users #lingerie_wrapper table tr td,
+section#users #lingerie_wrapper table tr th,
+section#users #user_wrapper table tr td,
+section#users #user_wrapper table tr th {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border: 0.1rem solid #ddd;
+}
+section#collections #collection_wrapper table tr td img,
+section#collections #collection_wrapper table tr th img,
+section#collections #color_wrapper table tr td img,
+section#collections #color_wrapper table tr th img,
+section#collections #lingerie_wrapper table tr td img,
+section#collections #lingerie_wrapper table tr th img,
+section#collections #user_wrapper table tr td img,
+section#collections #user_wrapper table tr th img,
+section#colors #collection_wrapper table tr td img,
+section#colors #collection_wrapper table tr th img,
+section#colors #color_wrapper table tr td img,
+section#colors #color_wrapper table tr th img,
+section#colors #lingerie_wrapper table tr td img,
+section#colors #lingerie_wrapper table tr th img,
+section#colors #user_wrapper table tr td img,
+section#colors #user_wrapper table tr th img,
+section#lingeries #collection_wrapper table tr td img,
+section#lingeries #collection_wrapper table tr th img,
+section#lingeries #color_wrapper table tr td img,
+section#lingeries #color_wrapper table tr th img,
+section#lingeries #lingerie_wrapper table tr td img,
+section#lingeries #lingerie_wrapper table tr th img,
+section#lingeries #user_wrapper table tr td img,
+section#lingeries #user_wrapper table tr th img,
+section#popups #collection_wrapper table tr td img,
+section#popups #collection_wrapper table tr th img,
+section#popups #color_wrapper table tr td img,
+section#popups #color_wrapper table tr th img,
+section#popups #lingerie_wrapper table tr td img,
+section#popups #lingerie_wrapper table tr th img,
+section#popups #user_wrapper table tr td img,
+section#popups #user_wrapper table tr th img,
+section#users #collection_wrapper table tr td img,
+section#users #collection_wrapper table tr th img,
+section#users #color_wrapper table tr td img,
+section#users #color_wrapper table tr th img,
+section#users #lingerie_wrapper table tr td img,
+section#users #lingerie_wrapper table tr th img,
+section#users #user_wrapper table tr td img,
+section#users #user_wrapper table tr th img {
+  max-width: 100%;
+}
+section#collections #collection_wrapper table tr th,
+section#collections #color_wrapper table tr th,
+section#collections #lingerie_wrapper table tr th,
+section#collections #user_wrapper table tr th,
+section#colors #collection_wrapper table tr th,
+section#colors #color_wrapper table tr th,
+section#colors #lingerie_wrapper table tr th,
+section#colors #user_wrapper table tr th,
+section#lingeries #collection_wrapper table tr th,
+section#lingeries #color_wrapper table tr th,
+section#lingeries #lingerie_wrapper table tr th,
+section#lingeries #user_wrapper table tr th,
+section#popups #collection_wrapper table tr th,
+section#popups #color_wrapper table tr th,
+section#popups #lingerie_wrapper table tr th,
+section#popups #user_wrapper table tr th,
+section#users #collection_wrapper table tr th,
+section#users #color_wrapper table tr th,
+section#users #lingerie_wrapper table tr th,
+section#users #user_wrapper table tr th {
+  padding: 1.2rem 0;
+  background-color: #333;
+  color: white;
+}
+section#collections #collection_wrapper table tr .collection_name,
+section#collections #collection_wrapper table tr .color_name,
+section#collections #collection_wrapper table tr .lingerie_name,
+section#collections #color_wrapper table tr .collection_name,
+section#collections #color_wrapper table tr .color_name,
+section#collections #color_wrapper table tr .lingerie_name,
+section#collections #lingerie_wrapper table tr .collection_name,
+section#collections #lingerie_wrapper table tr .color_name,
+section#collections #lingerie_wrapper table tr .lingerie_name,
+section#collections #user_wrapper table tr .collection_name,
+section#collections #user_wrapper table tr .color_name,
+section#collections #user_wrapper table tr .lingerie_name,
+section#colors #collection_wrapper table tr .collection_name,
+section#colors #collection_wrapper table tr .color_name,
+section#colors #collection_wrapper table tr .lingerie_name,
+section#colors #color_wrapper table tr .collection_name,
+section#colors #color_wrapper table tr .color_name,
+section#colors #color_wrapper table tr .lingerie_name,
+section#colors #lingerie_wrapper table tr .collection_name,
+section#colors #lingerie_wrapper table tr .color_name,
+section#colors #lingerie_wrapper table tr .lingerie_name,
+section#colors #user_wrapper table tr .collection_name,
+section#colors #user_wrapper table tr .color_name,
+section#colors #user_wrapper table tr .lingerie_name,
+section#lingeries #collection_wrapper table tr .collection_name,
+section#lingeries #collection_wrapper table tr .color_name,
+section#lingeries #collection_wrapper table tr .lingerie_name,
+section#lingeries #color_wrapper table tr .collection_name,
+section#lingeries #color_wrapper table tr .color_name,
+section#lingeries #color_wrapper table tr .lingerie_name,
+section#lingeries #lingerie_wrapper table tr .collection_name,
+section#lingeries #lingerie_wrapper table tr .color_name,
+section#lingeries #lingerie_wrapper table tr .lingerie_name,
+section#lingeries #user_wrapper table tr .collection_name,
+section#lingeries #user_wrapper table tr .color_name,
+section#lingeries #user_wrapper table tr .lingerie_name,
+section#popups #collection_wrapper table tr .collection_name,
+section#popups #collection_wrapper table tr .color_name,
+section#popups #collection_wrapper table tr .lingerie_name,
+section#popups #color_wrapper table tr .collection_name,
+section#popups #color_wrapper table tr .color_name,
+section#popups #color_wrapper table tr .lingerie_name,
+section#popups #lingerie_wrapper table tr .collection_name,
+section#popups #lingerie_wrapper table tr .color_name,
+section#popups #lingerie_wrapper table tr .lingerie_name,
+section#popups #user_wrapper table tr .collection_name,
+section#popups #user_wrapper table tr .color_name,
+section#popups #user_wrapper table tr .lingerie_name,
+section#users #collection_wrapper table tr .collection_name,
+section#users #collection_wrapper table tr .color_name,
+section#users #collection_wrapper table tr .lingerie_name,
+section#users #color_wrapper table tr .collection_name,
+section#users #color_wrapper table tr .color_name,
+section#users #color_wrapper table tr .lingerie_name,
+section#users #lingerie_wrapper table tr .collection_name,
+section#users #lingerie_wrapper table tr .color_name,
+section#users #lingerie_wrapper table tr .lingerie_name,
+section#users #user_wrapper table tr .collection_name,
+section#users #user_wrapper table tr .color_name,
+section#users #user_wrapper table tr .lingerie_name {
+  text-transform: capitalize;
+}
+section#collections #collection_wrapper table tr .disabled,
+section#collections #color_wrapper table tr .disabled,
+section#collections #lingerie_wrapper table tr .disabled,
+section#collections #user_wrapper table tr .disabled,
+section#colors #collection_wrapper table tr .disabled,
+section#colors #color_wrapper table tr .disabled,
+section#colors #lingerie_wrapper table tr .disabled,
+section#colors #user_wrapper table tr .disabled,
+section#lingeries #collection_wrapper table tr .disabled,
+section#lingeries #color_wrapper table tr .disabled,
+section#lingeries #lingerie_wrapper table tr .disabled,
+section#lingeries #user_wrapper table tr .disabled,
+section#popups #collection_wrapper table tr .disabled,
+section#popups #color_wrapper table tr .disabled,
+section#popups #lingerie_wrapper table tr .disabled,
+section#popups #user_wrapper table tr .disabled,
+section#users #collection_wrapper table tr .disabled,
+section#users #color_wrapper table tr .disabled,
+section#users #lingerie_wrapper table tr .disabled,
+section#users #user_wrapper table tr .disabled {
+  pointer-events: none;
+}
+section#collections #collection_wrapper table tr .disabled a,
+section#collections #color_wrapper table tr .disabled a,
+section#collections #lingerie_wrapper table tr .disabled a,
+section#collections #user_wrapper table tr .disabled a,
+section#colors #collection_wrapper table tr .disabled a,
+section#colors #color_wrapper table tr .disabled a,
+section#colors #lingerie_wrapper table tr .disabled a,
+section#colors #user_wrapper table tr .disabled a,
+section#lingeries #collection_wrapper table tr .disabled a,
+section#lingeries #color_wrapper table tr .disabled a,
+section#lingeries #lingerie_wrapper table tr .disabled a,
+section#lingeries #user_wrapper table tr .disabled a,
+section#popups #collection_wrapper table tr .disabled a,
+section#popups #color_wrapper table tr .disabled a,
+section#popups #lingerie_wrapper table tr .disabled a,
+section#popups #user_wrapper table tr .disabled a,
+section#users #collection_wrapper table tr .disabled a,
+section#users #color_wrapper table tr .disabled a,
+section#users #lingerie_wrapper table tr .disabled a,
+section#users #user_wrapper table tr .disabled a {
+  color: black;
+  opacity: 0.5;
+}
+@media only screen and (max-width: 1023px) {
+  section#collections #collection_wrapper table,
+section#collections #color_wrapper table,
+section#collections #lingerie_wrapper table,
+section#collections #user_wrapper table,
+section#colors #collection_wrapper table,
+section#colors #color_wrapper table,
+section#colors #lingerie_wrapper table,
+section#colors #user_wrapper table,
+section#lingeries #collection_wrapper table,
+section#lingeries #color_wrapper table,
+section#lingeries #lingerie_wrapper table,
+section#lingeries #user_wrapper table,
+section#popups #collection_wrapper table,
+section#popups #color_wrapper table,
+section#popups #lingerie_wrapper table,
+section#popups #user_wrapper table,
+section#users #collection_wrapper table,
+section#users #color_wrapper table,
+section#users #lingerie_wrapper table,
+section#users #user_wrapper table {
+    width: 85%;
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 575px) {
+  section#collections #collection_wrapper table,
+section#collections #color_wrapper table,
+section#collections #lingerie_wrapper table,
+section#collections #user_wrapper table,
+section#colors #collection_wrapper table,
+section#colors #color_wrapper table,
+section#colors #lingerie_wrapper table,
+section#colors #user_wrapper table,
+section#lingeries #collection_wrapper table,
+section#lingeries #color_wrapper table,
+section#lingeries #lingerie_wrapper table,
+section#lingeries #user_wrapper table,
+section#popups #collection_wrapper table,
+section#popups #color_wrapper table,
+section#popups #lingerie_wrapper table,
+section#popups #user_wrapper table,
+section#users #collection_wrapper table,
+section#users #color_wrapper table,
+section#users #lingerie_wrapper table,
+section#users #user_wrapper table {
+    width: 110%;
+    font-size: 1rem;
+  }
+}
+section#collections #collection_wrapper #color_table th,
+section#collections #collection_wrapper #color_table td,
+section#collections #color_wrapper #color_table th,
+section#collections #color_wrapper #color_table td,
+section#collections #lingerie_wrapper #color_table th,
+section#collections #lingerie_wrapper #color_table td,
+section#collections #user_wrapper #color_table th,
+section#collections #user_wrapper #color_table td,
+section#colors #collection_wrapper #color_table th,
+section#colors #collection_wrapper #color_table td,
+section#colors #color_wrapper #color_table th,
+section#colors #color_wrapper #color_table td,
+section#colors #lingerie_wrapper #color_table th,
+section#colors #lingerie_wrapper #color_table td,
+section#colors #user_wrapper #color_table th,
+section#colors #user_wrapper #color_table td,
+section#lingeries #collection_wrapper #color_table th,
+section#lingeries #collection_wrapper #color_table td,
+section#lingeries #color_wrapper #color_table th,
+section#lingeries #color_wrapper #color_table td,
+section#lingeries #lingerie_wrapper #color_table th,
+section#lingeries #lingerie_wrapper #color_table td,
+section#lingeries #user_wrapper #color_table th,
+section#lingeries #user_wrapper #color_table td,
+section#popups #collection_wrapper #color_table th,
+section#popups #collection_wrapper #color_table td,
+section#popups #color_wrapper #color_table th,
+section#popups #color_wrapper #color_table td,
+section#popups #lingerie_wrapper #color_table th,
+section#popups #lingerie_wrapper #color_table td,
+section#popups #user_wrapper #color_table th,
+section#popups #user_wrapper #color_table td,
+section#users #collection_wrapper #color_table th,
+section#users #collection_wrapper #color_table td,
+section#users #color_wrapper #color_table th,
+section#users #color_wrapper #color_table td,
+section#users #lingerie_wrapper #color_table th,
+section#users #lingerie_wrapper #color_table td,
+section#users #user_wrapper #color_table th,
+section#users #user_wrapper #color_table td {
+  width: 33%;
+}
+section#collections #popups_wrapper,
+section#colors #popups_wrapper,
+section#lingeries #popups_wrapper,
+section#popups #popups_wrapper,
+section#users #popups_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section#collections #popups_wrapper .popup_wrapper,
+section#colors #popups_wrapper .popup_wrapper,
+section#lingeries #popups_wrapper .popup_wrapper,
+section#popups #popups_wrapper .popup_wrapper,
+section#users #popups_wrapper .popup_wrapper {
+  position: relative;
+  width: 40.8rem;
+  height: 57rem;
+  margin: 2rem auto;
+  box-shadow: 0 0 0.25rem black;
+  border-radius: 0.5rem;
+  font-family: "Suisse Int'l Mono";
+  overflow: hidden;
+}
+section#collections #popups_wrapper .popup_wrapper img,
+section#colors #popups_wrapper .popup_wrapper img,
+section#lingeries #popups_wrapper .popup_wrapper img,
+section#popups #popups_wrapper .popup_wrapper img,
+section#users #popups_wrapper .popup_wrapper img {
+  max-width: 100%;
+}
+section#collections #popups_wrapper .popup_wrapper .popup_informations,
+section#colors #popups_wrapper .popup_wrapper .popup_informations,
+section#lingeries #popups_wrapper .popup_wrapper .popup_informations,
+section#popups #popups_wrapper .popup_wrapper .popup_informations,
+section#users #popups_wrapper .popup_wrapper .popup_informations {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+  margin-bottom: 0.75rem;
+}
+section#collections #popups_wrapper .popup_wrapper .popup_informations h5,
+section#colors #popups_wrapper .popup_wrapper .popup_informations h5,
+section#lingeries #popups_wrapper .popup_wrapper .popup_informations h5,
+section#popups #popups_wrapper .popup_wrapper .popup_informations h5,
+section#users #popups_wrapper .popup_wrapper .popup_informations h5 {
+  font-size: 1.2rem;
+}
+section#collections #popups_wrapper .popup_wrapper img.popup_logo,
+section#colors #popups_wrapper .popup_wrapper img.popup_logo,
+section#lingeries #popups_wrapper .popup_wrapper img.popup_logo,
+section#popups #popups_wrapper .popup_wrapper img.popup_logo,
+section#users #popups_wrapper .popup_wrapper img.popup_logo {
+  position: absolute;
+  bottom: -1rem;
+}
+section#collections #popups_wrapper .popup_options,
+section#colors #popups_wrapper .popup_options,
+section#lingeries #popups_wrapper .popup_options,
+section#popups #popups_wrapper .popup_options,
+section#users #popups_wrapper .popup_options {
+  margin-bottom: 5rem;
+}
+section#collections #popups_wrapper .popup_options p,
+section#colors #popups_wrapper .popup_options p,
+section#lingeries #popups_wrapper .popup_options p,
+section#popups #popups_wrapper .popup_options p,
+section#users #popups_wrapper .popup_options p {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+section#collections #popups_wrapper .popup_options a,
+section#colors #popups_wrapper .popup_options a,
+section#lingeries #popups_wrapper .popup_options a,
+section#popups #popups_wrapper .popup_options a,
+section#users #popups_wrapper .popup_options a {
+  padding: 1rem 2rem 0.8rem 2rem;
+  color: black;
+  border: 0.2rem black solid;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: 0.2s;
+}
+section#collections #popups_wrapper .popup_options a:hover,
+section#colors #popups_wrapper .popup_options a:hover,
+section#lingeries #popups_wrapper .popup_options a:hover,
+section#popups #popups_wrapper .popup_options a:hover,
+section#users #popups_wrapper .popup_options a:hover {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+@media only screen and (max-width: 575px) {
+  section#collections,
+section#colors,
+section#lingeries,
+section#popups,
+section#users {
+    width: 90%;
+  }
+}
+
+section#lingeries #lingerie_wrapper #lingerie_table {
+  width: 100%;
+}
+section#lingeries #lingerie_wrapper #lingerie_table .lingerie_number {
+  width: 5%;
+}
+section#lingeries #lingerie_wrapper #lingerie_table td,
+section#lingeries #lingerie_wrapper #lingerie_table th {
+  width: 11%;
+  word-break: break-all;
+}
+@media screen and (max-width: 1023px) {
+  section#lingeries {
+    width: 95%;
+  }
+  section#lingeries #lingerie_table {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: 20;
+    width: 100%;
+    padding: 2rem 0;
+    background-color: #f8f8f8;
+  }
+}
+#collection,
+#color,
+#lingerie,
+#popup,
+#create_account,
+#login,
+#ap_admin,
+#emails,
+#res_admin,
+#reservations {
+  padding-top: 2rem;
+}
+#collection nav,
+#color nav,
+#lingerie nav,
+#popup nav,
+#create_account nav,
+#login nav,
+#ap_admin nav,
+#emails nav,
+#res_admin nav,
+#reservations nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+#collection nav ul,
+#color nav ul,
+#lingerie nav ul,
+#popup nav ul,
+#create_account nav ul,
+#login nav ul,
+#ap_admin nav ul,
+#emails nav ul,
+#res_admin nav ul,
+#reservations nav ul {
+  width: 33%;
+  padding: 0;
+}
+#collection nav ul li,
+#color nav ul li,
+#lingerie nav ul li,
+#popup nav ul li,
+#create_account nav ul li,
+#login nav ul li,
+#ap_admin nav ul li,
+#emails nav ul li,
+#res_admin nav ul li,
+#reservations nav ul li {
+  list-style-type: none;
+}
+#collection nav ul li a,
+#color nav ul li a,
+#lingerie nav ul li a,
+#popup nav ul li a,
+#create_account nav ul li a,
+#login nav ul li a,
+#ap_admin nav ul li a,
+#emails nav ul li a,
+#res_admin nav ul li a,
+#reservations nav ul li a {
+  padding: 1rem 2rem 0.8rem 2rem;
+  color: black;
+  border: 0.2rem black solid;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: 0.2s;
+}
+#collection nav ul li a:hover,
+#color nav ul li a:hover,
+#lingerie nav ul li a:hover,
+#popup nav ul li a:hover,
+#create_account nav ul li a:hover,
+#login nav ul li a:hover,
+#ap_admin nav ul li a:hover,
+#emails nav ul li a:hover,
+#res_admin nav ul li a:hover,
+#reservations nav ul li a:hover {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+@media only screen and (max-width: 767px) {
+  #collection nav ul,
+#color nav ul,
+#lingerie nav ul,
+#popup nav ul,
+#create_account nav ul,
+#login nav ul,
+#ap_admin nav ul,
+#emails nav ul,
+#res_admin nav ul,
+#reservations nav ul {
+    width: 80%;
+  }
+}
+#collection h1,
+#color h1,
+#lingerie h1,
+#popup h1,
+#create_account h1,
+#login h1,
+#ap_admin h1,
+#emails h1,
+#res_admin h1,
+#reservations h1 {
+  font-family: "Suisse Int'l Mono";
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+#collection hr,
+#color hr,
+#lingerie hr,
+#popup hr,
+#create_account hr,
+#login hr,
+#ap_admin hr,
+#emails hr,
+#res_admin hr,
+#reservations hr {
+  width: 10rem;
+  height: 0.5rem;
+  margin: auto;
+  background-color: black;
+}
+#collection .alert,
+#color .alert,
+#lingerie .alert,
+#popup .alert,
+#create_account .alert,
+#login .alert,
+#ap_admin .alert,
+#emails .alert,
+#res_admin .alert,
+#reservations .alert {
+  margin-top: 5rem;
+}
+#collection form,
+#color form,
+#lingerie form,
+#popup form,
+#create_account form,
+#login form,
+#ap_admin form,
+#emails form,
+#res_admin form,
+#reservations form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+#collection form .form_wrapper,
+#color form .form_wrapper,
+#lingerie form .form_wrapper,
+#popup form .form_wrapper,
+#create_account form .form_wrapper,
+#login form .form_wrapper,
+#ap_admin form .form_wrapper,
+#emails form .form_wrapper,
+#res_admin form .form_wrapper,
+#reservations form .form_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  padding: 1rem 0 3rem 0;
+}
+#collection form .form_wrapper label,
+#collection form .form_wrapper h2,
+#color form .form_wrapper label,
+#color form .form_wrapper h2,
+#lingerie form .form_wrapper label,
+#lingerie form .form_wrapper h2,
+#popup form .form_wrapper label,
+#popup form .form_wrapper h2,
+#create_account form .form_wrapper label,
+#create_account form .form_wrapper h2,
+#login form .form_wrapper label,
+#login form .form_wrapper h2,
+#ap_admin form .form_wrapper label,
+#ap_admin form .form_wrapper h2,
+#emails form .form_wrapper label,
+#emails form .form_wrapper h2,
+#res_admin form .form_wrapper label,
+#res_admin form .form_wrapper h2,
+#reservations form .form_wrapper label,
+#reservations form .form_wrapper h2 {
+  margin-bottom: 1rem;
+  font-family: "Suisse Int'l";
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+#collection form .form_wrapper input[type=text],
+#collection form .form_wrapper input[type=number],
+#collection form .form_wrapper input[type=email],
+#collection form .form_wrapper input[type=password],
+#collection form .form_wrapper select,
+#collection form .form_wrapper textarea,
+#color form .form_wrapper input[type=text],
+#color form .form_wrapper input[type=number],
+#color form .form_wrapper input[type=email],
+#color form .form_wrapper input[type=password],
+#color form .form_wrapper select,
+#color form .form_wrapper textarea,
+#lingerie form .form_wrapper input[type=text],
+#lingerie form .form_wrapper input[type=number],
+#lingerie form .form_wrapper input[type=email],
+#lingerie form .form_wrapper input[type=password],
+#lingerie form .form_wrapper select,
+#lingerie form .form_wrapper textarea,
+#popup form .form_wrapper input[type=text],
+#popup form .form_wrapper input[type=number],
+#popup form .form_wrapper input[type=email],
+#popup form .form_wrapper input[type=password],
+#popup form .form_wrapper select,
+#popup form .form_wrapper textarea,
+#create_account form .form_wrapper input[type=text],
+#create_account form .form_wrapper input[type=number],
+#create_account form .form_wrapper input[type=email],
+#create_account form .form_wrapper input[type=password],
+#create_account form .form_wrapper select,
+#create_account form .form_wrapper textarea,
+#login form .form_wrapper input[type=text],
+#login form .form_wrapper input[type=number],
+#login form .form_wrapper input[type=email],
+#login form .form_wrapper input[type=password],
+#login form .form_wrapper select,
+#login form .form_wrapper textarea,
+#ap_admin form .form_wrapper input[type=text],
+#ap_admin form .form_wrapper input[type=number],
+#ap_admin form .form_wrapper input[type=email],
+#ap_admin form .form_wrapper input[type=password],
+#ap_admin form .form_wrapper select,
+#ap_admin form .form_wrapper textarea,
+#emails form .form_wrapper input[type=text],
+#emails form .form_wrapper input[type=number],
+#emails form .form_wrapper input[type=email],
+#emails form .form_wrapper input[type=password],
+#emails form .form_wrapper select,
+#emails form .form_wrapper textarea,
+#res_admin form .form_wrapper input[type=text],
+#res_admin form .form_wrapper input[type=number],
+#res_admin form .form_wrapper input[type=email],
+#res_admin form .form_wrapper input[type=password],
+#res_admin form .form_wrapper select,
+#res_admin form .form_wrapper textarea,
+#reservations form .form_wrapper input[type=text],
+#reservations form .form_wrapper input[type=number],
+#reservations form .form_wrapper input[type=email],
+#reservations form .form_wrapper input[type=password],
+#reservations form .form_wrapper select,
+#reservations form .form_wrapper textarea {
+  padding: 0 2rem;
+  border: 0.2rem black solid;
+  border-radius: 0.75rem;
+}
+#collection form .form_wrapper input[type=text],
+#collection form .form_wrapper input[type=number],
+#collection form .form_wrapper input[type=email],
+#collection form .form_wrapper input[type=password],
+#color form .form_wrapper input[type=text],
+#color form .form_wrapper input[type=number],
+#color form .form_wrapper input[type=email],
+#color form .form_wrapper input[type=password],
+#lingerie form .form_wrapper input[type=text],
+#lingerie form .form_wrapper input[type=number],
+#lingerie form .form_wrapper input[type=email],
+#lingerie form .form_wrapper input[type=password],
+#popup form .form_wrapper input[type=text],
+#popup form .form_wrapper input[type=number],
+#popup form .form_wrapper input[type=email],
+#popup form .form_wrapper input[type=password],
+#create_account form .form_wrapper input[type=text],
+#create_account form .form_wrapper input[type=number],
+#create_account form .form_wrapper input[type=email],
+#create_account form .form_wrapper input[type=password],
+#login form .form_wrapper input[type=text],
+#login form .form_wrapper input[type=number],
+#login form .form_wrapper input[type=email],
+#login form .form_wrapper input[type=password],
+#ap_admin form .form_wrapper input[type=text],
+#ap_admin form .form_wrapper input[type=number],
+#ap_admin form .form_wrapper input[type=email],
+#ap_admin form .form_wrapper input[type=password],
+#emails form .form_wrapper input[type=text],
+#emails form .form_wrapper input[type=number],
+#emails form .form_wrapper input[type=email],
+#emails form .form_wrapper input[type=password],
+#res_admin form .form_wrapper input[type=text],
+#res_admin form .form_wrapper input[type=number],
+#res_admin form .form_wrapper input[type=email],
+#res_admin form .form_wrapper input[type=password],
+#reservations form .form_wrapper input[type=text],
+#reservations form .form_wrapper input[type=number],
+#reservations form .form_wrapper input[type=email],
+#reservations form .form_wrapper input[type=password] {
+  padding-top: 0.8rem;
+  padding-bottom: 0.5rem;
+}
+#collection form .form_wrapper #price_container,
+#color form .form_wrapper #price_container,
+#lingerie form .form_wrapper #price_container,
+#popup form .form_wrapper #price_container,
+#create_account form .form_wrapper #price_container,
+#login form .form_wrapper #price_container,
+#ap_admin form .form_wrapper #price_container,
+#emails form .form_wrapper #price_container,
+#res_admin form .form_wrapper #price_container,
+#reservations form .form_wrapper #price_container {
+  display: inline-block;
+  position: relative;
+}
+#collection form .form_wrapper #price_container input[type=number],
+#color form .form_wrapper #price_container input[type=number],
+#lingerie form .form_wrapper #price_container input[type=number],
+#popup form .form_wrapper #price_container input[type=number],
+#create_account form .form_wrapper #price_container input[type=number],
+#login form .form_wrapper #price_container input[type=number],
+#ap_admin form .form_wrapper #price_container input[type=number],
+#emails form .form_wrapper #price_container input[type=number],
+#res_admin form .form_wrapper #price_container input[type=number],
+#reservations form .form_wrapper #price_container input[type=number] {
+  width: 100%;
+}
+#collection form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button, #collection form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#color form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#color form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#lingerie form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#lingerie form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#popup form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#popup form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#create_account form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#create_account form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#login form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#login form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#ap_admin form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#ap_admin form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#emails form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#emails form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#res_admin form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#res_admin form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button,
+#reservations form .form_wrapper #price_container input[type=number]::-webkit-outer-spin-button,
+#reservations form .form_wrapper #price_container input[type=number]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+#collection form .form_wrapper #unit,
+#color form .form_wrapper #unit,
+#lingerie form .form_wrapper #unit,
+#popup form .form_wrapper #unit,
+#create_account form .form_wrapper #unit,
+#login form .form_wrapper #unit,
+#ap_admin form .form_wrapper #unit,
+#emails form .form_wrapper #unit,
+#res_admin form .form_wrapper #unit,
+#reservations form .form_wrapper #unit {
+  position: absolute;
+  right: 0;
+  top: 0.3rem;
+  padding-top: 0.7rem;
+  padding-right: 2rem;
+}
+#collection form .form_wrapper select,
+#color form .form_wrapper select,
+#lingerie form .form_wrapper select,
+#popup form .form_wrapper select,
+#create_account form .form_wrapper select,
+#login form .form_wrapper select,
+#ap_admin form .form_wrapper select,
+#emails form .form_wrapper select,
+#res_admin form .form_wrapper select,
+#reservations form .form_wrapper select {
+  padding-top: 1rem;
+  padding-bottom: 0.8rem;
+}
+#collection form .form_wrapper select option,
+#color form .form_wrapper select option,
+#lingerie form .form_wrapper select option,
+#popup form .form_wrapper select option,
+#create_account form .form_wrapper select option,
+#login form .form_wrapper select option,
+#ap_admin form .form_wrapper select option,
+#emails form .form_wrapper select option,
+#res_admin form .form_wrapper select option,
+#reservations form .form_wrapper select option {
+  font-family: "Arial";
+}
+#collection form .form_wrapper .custom_scrollbar,
+#color form .form_wrapper .custom_scrollbar,
+#lingerie form .form_wrapper .custom_scrollbar,
+#popup form .form_wrapper .custom_scrollbar,
+#create_account form .form_wrapper .custom_scrollbar,
+#login form .form_wrapper .custom_scrollbar,
+#ap_admin form .form_wrapper .custom_scrollbar,
+#emails form .form_wrapper .custom_scrollbar,
+#res_admin form .form_wrapper .custom_scrollbar,
+#reservations form .form_wrapper .custom_scrollbar {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  overflow: auto;
+}
+#collection form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#color form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#lingerie form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#popup form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#create_account form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#login form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#ap_admin form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#emails form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#res_admin form .form_wrapper .custom_scrollbar::-webkit-scrollbar,
+#reservations form .form_wrapper .custom_scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.8rem;
+  background-color: #aaa;
+}
+#collection form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#color form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#lingerie form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#popup form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#create_account form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#login form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#ap_admin form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#emails form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#res_admin form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb,
+#reservations form .form_wrapper .custom_scrollbar::-webkit-scrollbar-thumb {
+  background: #000;
+}
+#collection form .form_wrapper textarea,
+#color form .form_wrapper textarea,
+#lingerie form .form_wrapper textarea,
+#popup form .form_wrapper textarea,
+#create_account form .form_wrapper textarea,
+#login form .form_wrapper textarea,
+#ap_admin form .form_wrapper textarea,
+#emails form .form_wrapper textarea,
+#res_admin form .form_wrapper textarea,
+#reservations form .form_wrapper textarea {
+  min-height: 5rem;
+  max-height: 15rem;
+  padding: 1rem 2rem;
+  resize: vertical;
+}
+#collection form .form_wrapper .switch,
+#color form .form_wrapper .switch,
+#lingerie form .form_wrapper .switch,
+#popup form .form_wrapper .switch,
+#create_account form .form_wrapper .switch,
+#login form .form_wrapper .switch,
+#ap_admin form .form_wrapper .switch,
+#emails form .form_wrapper .switch,
+#res_admin form .form_wrapper .switch,
+#reservations form .form_wrapper .switch {
+  display: inline-block;
+  position: relative;
+  width: 6rem;
+  height: 3.4rem;
+  margin-top: 0.5rem;
+}
+#collection form .form_wrapper .switch input,
+#color form .form_wrapper .switch input,
+#lingerie form .form_wrapper .switch input,
+#popup form .form_wrapper .switch input,
+#create_account form .form_wrapper .switch input,
+#login form .form_wrapper .switch input,
+#ap_admin form .form_wrapper .switch input,
+#emails form .form_wrapper .switch input,
+#res_admin form .form_wrapper .switch input,
+#reservations form .form_wrapper .switch input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+#collection form .form_wrapper .switch input:checked + .slider,
+#color form .form_wrapper .switch input:checked + .slider,
+#lingerie form .form_wrapper .switch input:checked + .slider,
+#popup form .form_wrapper .switch input:checked + .slider,
+#create_account form .form_wrapper .switch input:checked + .slider,
+#login form .form_wrapper .switch input:checked + .slider,
+#ap_admin form .form_wrapper .switch input:checked + .slider,
+#emails form .form_wrapper .switch input:checked + .slider,
+#res_admin form .form_wrapper .switch input:checked + .slider,
+#reservations form .form_wrapper .switch input:checked + .slider {
+  background-color: #181818;
+}
+#collection form .form_wrapper .switch input:focus + .slider,
+#color form .form_wrapper .switch input:focus + .slider,
+#lingerie form .form_wrapper .switch input:focus + .slider,
+#popup form .form_wrapper .switch input:focus + .slider,
+#create_account form .form_wrapper .switch input:focus + .slider,
+#login form .form_wrapper .switch input:focus + .slider,
+#ap_admin form .form_wrapper .switch input:focus + .slider,
+#emails form .form_wrapper .switch input:focus + .slider,
+#res_admin form .form_wrapper .switch input:focus + .slider,
+#reservations form .form_wrapper .switch input:focus + .slider {
+  box-shadow: 0 0 0.1rem #181818;
+}
+#collection form .form_wrapper .switch input:checked + .slider:before,
+#color form .form_wrapper .switch input:checked + .slider:before,
+#lingerie form .form_wrapper .switch input:checked + .slider:before,
+#popup form .form_wrapper .switch input:checked + .slider:before,
+#create_account form .form_wrapper .switch input:checked + .slider:before,
+#login form .form_wrapper .switch input:checked + .slider:before,
+#ap_admin form .form_wrapper .switch input:checked + .slider:before,
+#emails form .form_wrapper .switch input:checked + .slider:before,
+#res_admin form .form_wrapper .switch input:checked + .slider:before,
+#reservations form .form_wrapper .switch input:checked + .slider:before {
+  -webkit-transform: translateX(2.6rem);
+  -ms-transform: translateX(2.6rem);
+  transform: translateX(2.6rem);
+}
+#collection form .form_wrapper .slider,
+#color form .form_wrapper .slider,
+#lingerie form .form_wrapper .slider,
+#popup form .form_wrapper .slider,
+#create_account form .form_wrapper .slider,
+#login form .form_wrapper .slider,
+#ap_admin form .form_wrapper .slider,
+#emails form .form_wrapper .slider,
+#res_admin form .form_wrapper .slider,
+#reservations form .form_wrapper .slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 3.4rem;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+}
+#collection form .form_wrapper .slider:before,
+#color form .form_wrapper .slider:before,
+#lingerie form .form_wrapper .slider:before,
+#popup form .form_wrapper .slider:before,
+#create_account form .form_wrapper .slider:before,
+#login form .form_wrapper .slider:before,
+#ap_admin form .form_wrapper .slider:before,
+#emails form .form_wrapper .slider:before,
+#res_admin form .form_wrapper .slider:before,
+#reservations form .form_wrapper .slider:before {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0.4rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+  background-color: white;
+  content: "";
+}
+#collection form .form_wrapper #images_wrapper,
+#color form .form_wrapper #images_wrapper,
+#lingerie form .form_wrapper #images_wrapper,
+#popup form .form_wrapper #images_wrapper,
+#create_account form .form_wrapper #images_wrapper,
+#login form .form_wrapper #images_wrapper,
+#ap_admin form .form_wrapper #images_wrapper,
+#emails form .form_wrapper #images_wrapper,
+#res_admin form .form_wrapper #images_wrapper,
+#reservations form .form_wrapper #images_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+#collection form .form_wrapper #images_wrapper .image_wrapper,
+#color form .form_wrapper #images_wrapper .image_wrapper,
+#lingerie form .form_wrapper #images_wrapper .image_wrapper,
+#popup form .form_wrapper #images_wrapper .image_wrapper,
+#create_account form .form_wrapper #images_wrapper .image_wrapper,
+#login form .form_wrapper #images_wrapper .image_wrapper,
+#ap_admin form .form_wrapper #images_wrapper .image_wrapper,
+#emails form .form_wrapper #images_wrapper .image_wrapper,
+#res_admin form .form_wrapper #images_wrapper .image_wrapper,
+#reservations form .form_wrapper #images_wrapper .image_wrapper {
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 45%;
+  height: 100%;
+  min-height: 10rem;
+}
+#collection form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#color form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#lingerie form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#popup form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#create_account form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#login form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#ap_admin form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#emails form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#res_admin form .form_wrapper #images_wrapper .image_wrapper .image_preview,
+#reservations form .form_wrapper #images_wrapper .image_wrapper .image_preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 15rem;
+  margin-bottom: 2rem;
+  background-color: black;
+  border-radius: 2rem;
+}
+#collection form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#color form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#lingerie form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#popup form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#create_account form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#login form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#ap_admin form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#emails form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#res_admin form .form_wrapper #images_wrapper .image_wrapper .image_preview img,
+#reservations form .form_wrapper #images_wrapper .image_wrapper .image_preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+#collection form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#color form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#lingerie form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#popup form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#create_account form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#login form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#ap_admin form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#emails form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#res_admin form .form_wrapper #images_wrapper .image_wrapper .logo_preview,
+#reservations form .form_wrapper #images_wrapper .image_wrapper .logo_preview {
+  background-color: transparent;
+}
+#collection form .form_wrapper #images_wrapper .image_wrapper input,
+#color form .form_wrapper #images_wrapper .image_wrapper input,
+#lingerie form .form_wrapper #images_wrapper .image_wrapper input,
+#popup form .form_wrapper #images_wrapper .image_wrapper input,
+#create_account form .form_wrapper #images_wrapper .image_wrapper input,
+#login form .form_wrapper #images_wrapper .image_wrapper input,
+#ap_admin form .form_wrapper #images_wrapper .image_wrapper input,
+#emails form .form_wrapper #images_wrapper .image_wrapper input,
+#res_admin form .form_wrapper #images_wrapper .image_wrapper input,
+#reservations form .form_wrapper #images_wrapper .image_wrapper input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+#collection form .form_wrapper #images_wrapper .hidden,
+#color form .form_wrapper #images_wrapper .hidden,
+#lingerie form .form_wrapper #images_wrapper .hidden,
+#popup form .form_wrapper #images_wrapper .hidden,
+#create_account form .form_wrapper #images_wrapper .hidden,
+#login form .form_wrapper #images_wrapper .hidden,
+#ap_admin form .form_wrapper #images_wrapper .hidden,
+#emails form .form_wrapper #images_wrapper .hidden,
+#res_admin form .form_wrapper #images_wrapper .hidden,
+#reservations form .form_wrapper #images_wrapper .hidden {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  #collection form .form_wrapper #images_wrapper,
+#color form .form_wrapper #images_wrapper,
+#lingerie form .form_wrapper #images_wrapper,
+#popup form .form_wrapper #images_wrapper,
+#create_account form .form_wrapper #images_wrapper,
+#login form .form_wrapper #images_wrapper,
+#ap_admin form .form_wrapper #images_wrapper,
+#emails form .form_wrapper #images_wrapper,
+#res_admin form .form_wrapper #images_wrapper,
+#reservations form .form_wrapper #images_wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  #collection form .form_wrapper #images_wrapper .image_wrapper,
+#color form .form_wrapper #images_wrapper .image_wrapper,
+#lingerie form .form_wrapper #images_wrapper .image_wrapper,
+#popup form .form_wrapper #images_wrapper .image_wrapper,
+#create_account form .form_wrapper #images_wrapper .image_wrapper,
+#login form .form_wrapper #images_wrapper .image_wrapper,
+#ap_admin form .form_wrapper #images_wrapper .image_wrapper,
+#emails form .form_wrapper #images_wrapper .image_wrapper,
+#res_admin form .form_wrapper #images_wrapper .image_wrapper,
+#reservations form .form_wrapper #images_wrapper .image_wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #collection form .form_wrapper,
+#color form .form_wrapper,
+#lingerie form .form_wrapper,
+#popup form .form_wrapper,
+#create_account form .form_wrapper,
+#login form .form_wrapper,
+#ap_admin form .form_wrapper,
+#emails form .form_wrapper,
+#res_admin form .form_wrapper,
+#reservations form .form_wrapper {
+    width: 80%;
+  }
+}
+#collection form #colors_wrapper,
+#color form #colors_wrapper,
+#lingerie form #colors_wrapper,
+#popup form #colors_wrapper,
+#create_account form #colors_wrapper,
+#login form #colors_wrapper,
+#ap_admin form #colors_wrapper,
+#emails form #colors_wrapper,
+#res_admin form #colors_wrapper,
+#reservations form #colors_wrapper {
+  padding-top: 0;
+}
+#collection form input[type=submit],
+#color form input[type=submit],
+#lingerie form input[type=submit],
+#popup form input[type=submit],
+#create_account form input[type=submit],
+#login form input[type=submit],
+#ap_admin form input[type=submit],
+#emails form input[type=submit],
+#res_admin form input[type=submit],
+#reservations form input[type=submit] {
+  padding: 1rem 2rem 0.8rem 2rem;
+  background-color: transparent;
+  color: black;
+  border: 0.2rem black solid;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+#collection form input[type=submit]:hover,
+#color form input[type=submit]:hover,
+#lingerie form input[type=submit]:hover,
+#popup form input[type=submit]:hover,
+#create_account form input[type=submit]:hover,
+#login form input[type=submit]:hover,
+#ap_admin form input[type=submit]:hover,
+#emails form input[type=submit]:hover,
+#res_admin form input[type=submit]:hover,
+#reservations form input[type=submit]:hover {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+
+#res_admin,
+#ap_admin {
+  margin-top: 10rem;
+  padding-top: 0;
+}
+
+#ap_admin form #content {
+  display: flex;
+}
+#ap_admin form #content #left_content,
+#ap_admin form #content #right_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#ap_admin form #content #left_content .form_wrapper,
+#ap_admin form #content #right_content .form_wrapper {
+  width: 95%;
+}
+#ap_admin form #content #left_content .form_wrapper #input_left_description,
+#ap_admin form #content #left_content .form_wrapper #input_right_description,
+#ap_admin form #content #right_content .form_wrapper #input_left_description,
+#ap_admin form #content #right_content .form_wrapper #input_right_description {
+  min-height: 10rem;
+  max-height: 20rem;
+  padding: 1rem 2rem;
+  resize: vertical;
+}
+@media only screen and (max-width: 1023px) {
+  #ap_admin form #content {
+    flex-direction: column;
+  }
+}
+
+#emails,
+#reservations {
+  padding-bottom: 4rem;
+}
+#emails #email_table,
+#emails #reservation_table,
+#reservations #email_table,
+#reservations #reservation_table {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  border-collapse: collapse;
+  font-size: 1.5rem;
+}
+#emails #email_table tr,
+#emails #reservation_table tr,
+#reservations #email_table tr,
+#reservations #reservation_table tr {
+  display: flex;
+  justify-content: center;
+}
+#emails #email_table tr:nth-child(even),
+#emails #reservation_table tr:nth-child(even),
+#reservations #email_table tr:nth-child(even),
+#reservations #reservation_table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#emails #email_table tr:hover,
+#emails #reservation_table tr:hover,
+#reservations #email_table tr:hover,
+#reservations #reservation_table tr:hover {
+  background-color: #ddd;
+}
+#emails #email_table tr td,
+#emails #email_table tr th,
+#emails #reservation_table tr td,
+#emails #reservation_table tr th,
+#reservations #email_table tr td,
+#reservations #email_table tr th,
+#reservations #reservation_table tr td,
+#reservations #reservation_table tr th {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border: 0.1rem solid #ddd;
+  text-align: center;
+}
+#emails #email_table tr td img,
+#emails #email_table tr th img,
+#emails #reservation_table tr td img,
+#emails #reservation_table tr th img,
+#reservations #email_table tr td img,
+#reservations #email_table tr th img,
+#reservations #reservation_table tr td img,
+#reservations #reservation_table tr th img {
+  max-width: 100%;
+}
+#emails #email_table tr th,
+#emails #reservation_table tr th,
+#reservations #email_table tr th,
+#reservations #reservation_table tr th {
+  padding: 1.2rem 0;
+  background-color: #333;
+  color: white;
+}
+#emails #email_table tr .email_number,
+#emails #reservation_table tr .email_number,
+#reservations #email_table tr .email_number,
+#reservations #reservation_table tr .email_number {
+  width: 10%;
+}
+#emails #email_table tr .email_name,
+#emails #reservation_table tr .email_name,
+#reservations #email_table tr .email_name,
+#reservations #reservation_table tr .email_name {
+  width: 40%;
+}
+#emails #email_table tr .email_time,
+#emails #reservation_table tr .email_time,
+#reservations #email_table tr .email_time,
+#reservations #reservation_table tr .email_time {
+  width: 30%;
+}
+#emails #email_table tr .email_option,
+#emails #reservation_table tr .email_option,
+#reservations #email_table tr .email_option,
+#reservations #reservation_table tr .email_option {
+  width: 20%;
+}
+#emails #email_table tr .collection_name,
+#emails #email_table tr .color_name,
+#emails #email_table tr .lingerie_name,
+#emails #reservation_table tr .collection_name,
+#emails #reservation_table tr .color_name,
+#emails #reservation_table tr .lingerie_name,
+#reservations #email_table tr .collection_name,
+#reservations #email_table tr .color_name,
+#reservations #email_table tr .lingerie_name,
+#reservations #reservation_table tr .collection_name,
+#reservations #reservation_table tr .color_name,
+#reservations #reservation_table tr .lingerie_name {
+  text-transform: capitalize;
+}
+#emails #email_table tr .disabled,
+#emails #reservation_table tr .disabled,
+#reservations #email_table tr .disabled,
+#reservations #reservation_table tr .disabled {
+  pointer-events: none;
+}
+#emails #email_table tr .disabled a,
+#emails #reservation_table tr .disabled a,
+#reservations #email_table tr .disabled a,
+#reservations #reservation_table tr .disabled a {
+  color: black;
+  opacity: 0.5;
+}
+@media only screen and (max-width: 1023px) {
+  #emails #email_table,
+#emails #reservation_table,
+#reservations #email_table,
+#reservations #reservation_table {
+    width: 85%;
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 575px) {
+  #emails #email_table,
+#emails #reservation_table,
+#reservations #email_table,
+#reservations #reservation_table {
+    width: 95%;
+    font-size: 1rem;
+  }
+}
+
+#reservations #reservation_table {
+  width: 80%;
+  word-break: break-all;
+}
+#reservations #reservation_table .reservation_number {
+  width: 5%;
+}
+#reservations #reservation_table .reservation_time,
+#reservations #reservation_table .reservation_date,
+#reservations #reservation_table .reservation_option,
+#reservations #reservation_table .reservation_phone {
+  width: 13.5%;
+}
+#reservations #reservation_table .reservation_name {
+  width: 18%;
+}
+#reservations #reservation_table .reservation_email {
+  width: 22.5%;
+}
+@media screen and (max-width: 1023px) {
+  #reservations #reservation_table {
+    width: 90%;
+  }
+}
+
+section#users #user_wrapper {
+  margin-top: 5rem;
+}
+section#users #user_wrapper #user_table {
+  width: 100%;
+  word-break: break-all;
+}
+
+/*# sourceMappingURL=main.css.map */

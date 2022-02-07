@@ -1,0 +1,35 @@
+# Module de réécriture d'url
+RewriteEngine on
+
+# Liste des différentes règles de réécriture
+RewriteRule ^collection/$ index.php?page=carousel
+RewriteRule ^apropos/$ index.php?page=apropos
+RewriteRule ^point-de-vente/$ index.php?page=reservation
+
+RewriteRule ^create_account/$ index.php?page=create_account
+RewriteRule ^login/$ index.php?page=login
+RewriteRule ^admin/users/$ index.php?page=users
+RewriteRule ^admin/users/([0-9]+)$ index.php?page=users&operation=delete$id=$1
+
+RewriteRule ^admin/$ index.php?page=admin
+RewriteRule ^admin/apropos/$ index.php?page=ap_admin
+RewriteRule ^admin/apropos/([0-9]+)$ index.php?page=ap_admin&operation=delete&id=$1
+RewriteRule ^admin/point-de-vente/$ index.php?page=res_admin
+
+RewriteRule ^admin/ajouter_couleur/$ index.php?page=colors
+RewriteRule ^admin/editer_couleur/([0-9]+)$ ./index.php?page=colors&id=$1
+RewriteRule ^admin/supprimer_couleur/([0-9]+)$ ./index.php?page=colors&operation=delete&id=$1
+
+RewriteRule ^admin/ajouter_collection/$ index.php?page=collections
+RewriteRule ^admin/editer_collection/([0-9]+)$ ./index.php?page=collections&id=$1
+RewriteRule ^admin/supprimer_collection/([0-9]+)$ ./index.php?page=collections&operation=delete&id=$1
+
+RewriteRule ^admin/ajouter_lingerie/$ index.php?page=lingeries
+RewriteRule ^admin/editer_lingerie/([0-9]+)$ ./index.php?page=lingeries&id=$1
+RewriteRule ^admin/supprimer_lingerie/([0-9]+)$ ./index.php?page=lingeries&operation=delete&id=$1
+
+RewriteRule ^admin/ajouter_pop-up/$ index.php?page=pop-up
+RewriteRule ^admin/editer_pop-up/([0-9]+)$ ./index.php?page=pop-up&id=$1
+RewriteRule ^admin/supprimer_pop-up/([0-9]+)$ ./index.php?page=pop-up&operation=delete&id=$1
+
+RewriteRule ^logout$ logout.php
